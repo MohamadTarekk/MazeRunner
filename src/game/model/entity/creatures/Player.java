@@ -176,10 +176,6 @@ public class Player extends Creature {
 
 	@Override
 	public void render(Graphics g) {
-		if(!handler.getKeyManager().up && !handler.getKeyManager().down && !handler.getKeyManager().left && !handler.getKeyManager().right)
-			g.drawImage(Assets.player_right[1], (int) (x - handler.getGameCamera().getxOffset()), 
-					(int) (y - handler.getGameCamera().getyOffset()),width,height, null);
-		else
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), 
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		weapon.render(g);
