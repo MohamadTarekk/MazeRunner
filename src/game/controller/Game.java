@@ -3,11 +3,14 @@ package game.controller;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.JOptionPane;
+
 import game.graphics.Assets;
 import game.graphics.GameCamera;
 import game.input.KeyManager;
 import game.input.MouseManager;
 import game.view.Display;
+import game.view.Tile;
 
 
 public class Game implements Runnable {

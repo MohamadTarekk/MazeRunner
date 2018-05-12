@@ -7,8 +7,10 @@ import java.awt.image.BufferedImage;
 import game.controller.Handler;
 import game.graphics.Animation;
 import game.graphics.Assets;
+import game.model.Bullet;
 import game.model.Inventory;
 import game.model.Item;
+import game.model.Weapon;
 
 
 public class Player extends Creature {
@@ -19,6 +21,12 @@ public class Player extends Creature {
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 	// Inventory
 	private Inventory inventory;
+	public static String direction = "Right";
+	Weapon weapon = new Weapon();
+	public static int firedBullets = 0;
+	private boolean emptyMagazine = false;
+	
+
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -29,10 +37,10 @@ public class Player extends Creature {
 		bounds.height = 10;
 		
 		//Animations
-		animDown = new Animation(135, Assets.player_down);
-		animUp = new Animation(135, Assets.player_up);
-		animLeft = new Animation(135, Assets.player_left);
-		animRight = new Animation(135, Assets.player_right);
+		animDown = new Animation(250, Assets.player_down);
+		animUp = new Animation(250, Assets.player_up);
+		animLeft = new Animation(250, Assets.player_left);
+		animRight = new Animation(250, Assets.player_right);
 		
 		inventory = new Inventory(handler);
 	}
@@ -40,10 +48,10 @@ public class Player extends Creature {
 	@Override
 	public void tick() {
 		//Animations
-		animDown.tick();
-		animUp.tick();
 		animRight.tick();
 		animLeft.tick();
+		animDown.tick();
+		animUp.tick();
 		//Movement
 		getInput();
 		move();
@@ -52,6 +60,9 @@ public class Player extends Creature {
 		checkAttacks();
 		// Inventory
 		inventory.tick();
+		//Bullets
+		weapon.tick();
+		
 	}
 	
 	public boolean isBreakable(int tile) {
@@ -145,7 +156,6 @@ public class Player extends Creature {
 
 		if(inventory.isActive())
 			return;
-		
 		if(handler.getKeyManager().up)
 			yMove = -speed;
 		if(handler.getKeyManager().down)
@@ -154,12 +164,28 @@ public class Player extends Creature {
 			xMove = -speed;
 		if(handler.getKeyManager().right)
 			xMove = speed;
+		if(handler.getKeyManager().space && !handler.getKeyManager().isShooting &&!emptyMagazine) {
+			handler.getKeyManager().isShooting = true;
+			weapon.addBullet(new Bullet(x-handler.getGameCamera().getxOffset()
+					,y - handler.getGameCamera().getyOffset(),direction,handler));
+			firedBullets ++;
+			if(firedBullets == 20)
+				emptyMagazine = true;
+		}
 	}
+
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+		if(!handler.getKeyManager().up && !handler.getKeyManager().down && !handler.getKeyManager().left && !handler.getKeyManager().right)
+			g.drawImage(Assets.player_right[1], (int) (x - handler.getGameCamera().getxOffset()), 
+					(int) (y - handler.getGameCamera().getyOffset()),width,height, null);
+		else
+		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), 
+				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+		weapon.render(g);
 	}
+	
 	
 	public void postRender(Graphics g){
 		inventory.render(g);
@@ -181,6 +207,20 @@ public class Player extends Creature {
 			return animDown.getCurrentFrame();
 		} else
 			return getLastStateImage();
+	private BufferedImage getCurrentAnimationFrame(){
+		if(yMove < 0){
+			direction = "Up";
+			return animUp.getCurrentFrame();
+		}else if(yMove > 0){
+			direction = "Down";
+			return animDown.getCurrentFrame();
+		}else if(xMove < 0){
+			direction = "Left";
+			return animLeft.getCurrentFrame();
+		}else{			
+			direction = "Right";
+			return animRight.getCurrentFrame();
+		}
 	}
 
 	private BufferedImage getLastStateImage() {
@@ -202,4 +242,7 @@ public class Player extends Creature {
 		this.inventory = inventory;
 	}
 
+	public Weapon getWeapon() {
+		return weapon;
+	}
 }
