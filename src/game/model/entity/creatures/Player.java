@@ -21,7 +21,6 @@ public class Player extends Creature {
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 	// Inventory
 	private Inventory inventory;
-	public static String direction = "Right";
 	Weapon weapon = new Weapon();
 	public static int firedBullets = 0;
 	private boolean emptyMagazine = false;
@@ -167,7 +166,7 @@ public class Player extends Creature {
 		if(handler.getKeyManager().space && !handler.getKeyManager().isShooting &&!emptyMagazine) {
 			handler.getKeyManager().isShooting = true;
 			weapon.addBullet(new Bullet(x-handler.getGameCamera().getxOffset()
-					,y - handler.getGameCamera().getyOffset(),direction,handler));
+					,y - handler.getGameCamera().getyOffset(),lastState, handler));
 			firedBullets ++;
 			if(firedBullets == 20)
 				emptyMagazine = true;
@@ -207,20 +206,6 @@ public class Player extends Creature {
 			return animDown.getCurrentFrame();
 		} else
 			return getLastStateImage();
-	private BufferedImage getCurrentAnimationFrame(){
-		if(yMove < 0){
-			direction = "Up";
-			return animUp.getCurrentFrame();
-		}else if(yMove > 0){
-			direction = "Down";
-			return animDown.getCurrentFrame();
-		}else if(xMove < 0){
-			direction = "Left";
-			return animLeft.getCurrentFrame();
-		}else{			
-			direction = "Right";
-			return animRight.getCurrentFrame();
-		}
 	}
 
 	private BufferedImage getLastStateImage() {
