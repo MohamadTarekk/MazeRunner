@@ -2,10 +2,15 @@ package game.model;
 
 import java.awt.image.BufferedImage;
 
+
 public class Bomb extends Item {
 
 	public Bomb(BufferedImage texture, String name, int id) {
-		super(texture, name, id);
+		super(texture, name, id);		
+		bounds.x = 0;
+		bounds.y = 0;
+		bounds.width = 32;
+		bounds.height = 32;
 
 	}
 	
@@ -16,5 +21,7 @@ public class Bomb extends Item {
 			handler.getWorld().getEntityManager().getPlayer().hurt(1);
 		}
 	}
+	
+	
 	
 }

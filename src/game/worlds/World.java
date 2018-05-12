@@ -24,10 +24,10 @@ public class World {
 	
 	public World(Handler handler, String path){
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		entityManager = new EntityManager(handler, new Player(handler, 32, 32));
 		itemManager = new ItemManager(handler);
 		
-		itemManager.addItem(Item.bombItem.createNew(3*32, 32));
+		itemManager.addItem(Item.bombItem.createNew(9*32, 32));
 		// Temporary entity code!
 		/*
 		entityManager.addEntity(new Tree(handler, 132, 250));

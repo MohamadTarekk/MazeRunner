@@ -3,7 +3,6 @@ package game.model;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
-import game.controller.Handler;
 
 public class Weapon {
 
@@ -23,6 +22,10 @@ public class Weapon {
 	
 	public void addBullet(Bullet b) {
 		bullets.add(b);
+	}
+
+	public LinkedList<Bullet> getBullets() {
+		return bullets;
 	}
 	
 

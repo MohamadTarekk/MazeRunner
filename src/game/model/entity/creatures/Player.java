@@ -24,7 +24,7 @@ public class Player extends Creature {
 	private Inventory inventory;
 	public static String direction = "Right";
 	Weapon weapon = new Weapon();
-	private static int bullets = 6;
+	public static int firedBullets = 0;
 	private boolean emptyMagazine = false;
 	
 
@@ -49,10 +49,10 @@ public class Player extends Creature {
 	@Override
 	public void tick() {
 		//Animations
-		animDown.tick();
-		animUp.tick();
 		animRight.tick();
 		animLeft.tick();
+		animDown.tick();
+		animUp.tick();
 		//Movement
 		getInput();
 		move();
@@ -61,7 +61,6 @@ public class Player extends Creature {
 		checkAttacks();
 		// Inventory
 		inventory.tick();
-		System.out.println(direction);
 		//Bullets
 		weapon.tick();
 		
@@ -161,9 +160,9 @@ public class Player extends Creature {
 		if(handler.getKeyManager().space && !handler.getKeyManager().isShooting &&!emptyMagazine) {
 			handler.getKeyManager().isShooting = true;
 			weapon.addBullet(new Bullet(x-handler.getGameCamera().getxOffset()
-					,y - handler.getGameCamera().getyOffset(),direction));
-			bullets --;
-			if(bullets == 0)
+					,y - handler.getGameCamera().getyOffset(),direction,handler));
+			firedBullets ++;
+			if(firedBullets == 20)
 				emptyMagazine = true;
 		}
 	}
@@ -208,9 +207,14 @@ public class Player extends Creature {
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
-	
-	public void identifyDirection(Graphics g) {
-		
+
+	public Weapon getWeapon() {
+		return weapon;
 	}
+
+
+	
+    
+	
 
 }

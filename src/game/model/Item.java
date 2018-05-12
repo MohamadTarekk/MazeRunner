@@ -14,7 +14,7 @@ public class Item {
 	public static Item[] items = new Item[128];
 	public static Item woodItem = new Item(Assets.wood, "Wood", 0);
 	public static Item rockItem = new Item(Assets.rock, "Rock", 1);
-	public static Bomb bombItem = new Bomb(Assets.bomb, "Bomb", 2);
+	public static Item bombItem = new Bomb(Assets.bomb, "Bomb", 2);
 	
 	// Class
 	
@@ -57,6 +57,7 @@ public class Item {
 	
 	public void render(Graphics g, int x, int y){
 		g.drawImage(texture, x, y, ITEMWIDTH, ITEMHEIGHT, null);
+
 	}
 	
 	public Item createNew(int count){
