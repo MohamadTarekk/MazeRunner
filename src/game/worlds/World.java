@@ -7,6 +7,8 @@ import game.model.Item;
 import game.model.ItemManager;
 import game.model.entity.EntityManager;
 import game.model.entity.creatures.Player;
+import game.model.entity.statics.Rock;
+import game.model.entity.statics.Tree;
 import game.utils.Utils;
 import game.view.Tile;
 
