@@ -8,14 +8,16 @@ public class Assets {
 	private static final int width = 32, height = 32;
 	
 	public static Font font28;
-	
+
+
 	public static BufferedImage bomb;
-	public static BufferedImage stone, stone0, stone5, stone6, stone7, stone8, stone9;
-	public static BufferedImage dirt, grass, tree, rock;
+	public static BufferedImage stone0, stone5, stone6, stone7, stone8, stone9;
+	public static BufferedImage dirt, grass, stone, tree, rock , uiBackGround;
+
 	public static BufferedImage wood;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
-	public static BufferedImage[] btn_start;
+	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load;
 	public static BufferedImage inventoryScreen;
 
 	public static void init(){
@@ -26,11 +28,7 @@ public class Assets {
 		inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 		
 		wood = sheet.crop(width, height, width, height);
-		
-		btn_start = new BufferedImage[2];
-		btn_start[0] = sheet.crop(width * 6, height * 4, width * 2, height);
-		btn_start[1] = sheet.crop(width * 6, height * 5, width * 2, height);
-		
+				
 		player_down = new BufferedImage[2];
 		player_up = new BufferedImage[2];
 		player_left = new BufferedImage[2];
@@ -73,6 +71,7 @@ public class Assets {
 		bomb = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone1.png"));
 		stone = sheet.crop(0, 0, width, height);
+
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone0.png"));
 		stone0 = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone5.png"));
@@ -85,6 +84,23 @@ public class Assets {
 		stone8 = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone9.png"));
 		stone9 = sheet.crop(0, 0, width, height);
+
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));
+		uiBackGround = sheet.crop(0, 0, 640, 480);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/menu.png"));
+		btn_start = new BufferedImage[2];
+		btn_start[0] = sheet.crop(0, 0, 185, 80);
+		btn_start[1] = sheet.crop(0, 80, 185, 80);
+		btn_load = new BufferedImage[2];
+		btn_load[0] = sheet.crop(0, 80 * 2 , 185, 80);
+		btn_load[1] = sheet.crop(0, 80 * 3 , 185, 80);
+		btn_help = new BufferedImage[2];
+		btn_help[0] = sheet.crop(0, 80 * 4 , 185, 80);
+		btn_help[1] = sheet.crop(0, 80 * 5 , 185, 80);
+		btn_exit = new BufferedImage[2];
+		btn_exit[0] = sheet.crop(0, 80 * 6 , 185, 80);
+		btn_exit[1] = sheet.crop(0, 80 * 7 , 185, 80);
+
 
 	}
 	

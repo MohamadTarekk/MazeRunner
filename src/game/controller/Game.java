@@ -36,6 +36,8 @@ public class Game implements Runnable {
 	//Handler
 	private Handler handler;
 	
+	//Music player
+	
 	public Game(String title, int width, int height){
 		this.width = width;
 		this.height = height;
