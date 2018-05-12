@@ -5,7 +5,7 @@ import game.graphics.Assets;
 public class RockTile extends Tile {
 
 	public RockTile(int id) {
-		super(Assets.stone, id);
+		super(Assets.getStone(id), id);
 	}
 	
 	@Override

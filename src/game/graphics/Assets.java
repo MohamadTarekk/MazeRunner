@@ -9,7 +9,9 @@ public class Assets {
 	
 	public static Font font28;
 	
-	public static BufferedImage dirt, grass, stone, tree, rock;
+	public static BufferedImage bomb;
+	public static BufferedImage stone, stone0, stone5, stone6, stone7, stone8, stone9;
+	public static BufferedImage dirt, grass, tree, rock;
 	public static BufferedImage wood;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
@@ -65,10 +67,44 @@ public class Assets {
 		
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/woodWall.png"));
 		dirt = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/grass2.png"));
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/path.png"));
 		grass = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone.png"));
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/bomb.png"));
+		bomb = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone1.png"));
 		stone = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone0.png"));
+		stone0 = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone5.png"));
+		stone5 = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone6.png"));
+		stone6 = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone7.png"));
+		stone7 = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone8.png"));
+		stone8 = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone9.png"));
+		stone9 = sheet.crop(0, 0, width, height);
+
 	}
 	
+	public static BufferedImage getStone(int id) {
+		return stone;
+		/*
+		switch(id) {
+		case 0:
+			return stone0;
+		case 5:
+			return stone5;
+		case 6:
+			return stone6;
+		case 7:
+			return stone7;
+		case 8:
+			return stone8;
+		default:
+			return stone9;
+		}
+		//*/
+	}
 }

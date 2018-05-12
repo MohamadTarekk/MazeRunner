@@ -11,9 +11,10 @@ public class Item {
 	
 	// Handler
 	
-	public static Item[] items = new Item[256];
+	public static Item[] items = new Item[128];
 	public static Item woodItem = new Item(Assets.wood, "Wood", 0);
 	public static Item rockItem = new Item(Assets.rock, "Rock", 1);
+	public static Bomb bombItem = new Bomb(Assets.bomb, "Bomb", 2);
 	
 	// Class
 	
@@ -44,6 +45,7 @@ public class Item {
 		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
 			pickedUp = true;
 			handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+			System.out.println("a");
 		}
 	}
 	
@@ -65,7 +67,11 @@ public class Item {
 	}
 	
 	public Item createNew(int x, int y){
-		Item i = new Item(texture, name, id);
+		Item i;
+		if(name.equals("Bomb"))
+			i = new Bomb(texture, name, id);
+		else 
+			i = new Item(texture, name, id);
 		i.setPosition(x, y);
 		return i;
 	}

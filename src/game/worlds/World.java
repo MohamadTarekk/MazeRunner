@@ -3,11 +3,10 @@ package game.worlds;
 import java.awt.Graphics;
 
 import game.controller.Handler;
+import game.model.Item;
 import game.model.ItemManager;
 import game.model.entity.EntityManager;
 import game.model.entity.creatures.Player;
-import game.model.entity.statics.Rock;
-import game.model.entity.statics.Tree;
 import game.utils.Utils;
 import game.view.Tile;
 
@@ -27,6 +26,8 @@ public class World {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 		itemManager = new ItemManager(handler);
+		
+		itemManager.addItem(Item.bombItem.createNew(3*32, 32));
 		// Temporary entity code!
 		/*
 		entityManager.addEntity(new Tree(handler, 132, 250));
@@ -70,7 +71,7 @@ public class World {
 		
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null)
-			return Tile.dirtTile;
+			return Tile.grassTile;
 		return t;
 	}
 	
@@ -117,5 +118,12 @@ public class World {
 	public void setItemManager(ItemManager itemManager) {
 		this.itemManager = itemManager;
 	}
-	
+
+	public int[][] getTiles() {
+		return tiles;
+	}
+
+	public void setTiles(int[][] tiles) {
+		this.tiles = tiles;
+	}
 }

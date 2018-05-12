@@ -8,6 +8,7 @@ import game.controller.Handler;
 import game.graphics.Animation;
 import game.graphics.Assets;
 import game.model.Inventory;
+import game.model.Item;
 import game.model.entity.Entity;
 
 
@@ -95,7 +96,35 @@ public class Player extends Creature {
 				return;
 			}
 		}
-		
+		int[][] myTiles = handler.getWorld().getTiles();
+		for(int i = 0; i<myTiles.length; i++) {
+			for(int j = 0; j<myTiles.length; j++) {
+				if(isBreakable(myTiles[i][j]) && isNearby(i, j))
+					myTiles[i][j] = 1;
+			}
+		}
+		handler.getWorld().setTiles(myTiles);
+		for(Item item : handler.getWorld().getItemManager().getItems()) {
+			if(isNearby(item.getX()/32, item.getY()/32)) {
+				item.setPickedUp(true);
+			}
+		}
+	}
+	
+	public boolean isBreakable(int tile) {
+		if(tile == 2)
+			return true;
+		return false;
+	}
+	
+	public boolean isNearby(int i, int j) {
+		int xPos = (int) (x+bounds.x)/32;
+		int yPos = (int) (y+bounds.y)/32;
+		if(xPos == i && Math.abs(yPos - j) <= 1)
+			return true;
+		if(yPos == j && Math.abs(xPos - i) <= 1)
+			return true;
+		return false;
 	}
 	
 	@Override
