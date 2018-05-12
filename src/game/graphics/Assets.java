@@ -10,11 +10,12 @@ public class Assets {
 	public static Font font28;
 
 
-	public static BufferedImage bomb;
+	public static BufferedImage healthBomb;
 	public static BufferedImage stone0, stone5, stone6, stone7, stone8, stone9;
 	public static BufferedImage dirt, grass, stone, tree, rock , uiBackGround;
 
 	public static BufferedImage wood;
+	public static BufferedImage[] healthGift;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
 	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load;
@@ -56,22 +57,38 @@ public class Assets {
 		zombie_right[1] = sheet.crop(width * 5, height * 3, width, height);
 		zombie_left[0] = sheet.crop(width * 6, height * 3, width, height);
 		zombie_left[1] = sheet.crop(width * 7, height * 3, width, height);
+
+		healthGift = new BufferedImage[6];
+		
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_0.png"));
+		healthGift[0] = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_1.png"));
+		healthGift[1] = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_2.png"));
+		healthGift[2] = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_3.png"));
+		healthGift[3] = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_4.png"));
+		healthGift[4] = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_5.png"));
+		healthGift[5] = sheet.crop(0, 0, width, height);
+		
 		
 		// dirt = sheet.crop(width, 0, width, height);
 		// grass = sheet.crop(width * 2, 0, width, height);
 		// stone = sheet.crop(width * 3, 0, width, height);
-		tree = sheet.crop(0, 0, width, height * 2);
-		rock = sheet.crop(0, height * 2, width, height);
+		// tree = sheet.crop(0, 0, width, height * 2);
+		// rock = sheet.crop(0, height * 2, width, height);
 		
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/woodWall.png"));
 		dirt = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/path.png"));
 		grass = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/bomb.png"));
-		bomb = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/HealthBomb.png"));
+		healthBomb = sheet.crop(0, 0, width, height);
+		
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone1.png"));
 		stone = sheet.crop(0, 0, width, height);
-
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone0.png"));
 		stone0 = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone5.png"));

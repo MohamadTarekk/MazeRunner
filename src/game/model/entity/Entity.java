@@ -7,7 +7,7 @@ import game.controller.Handler;
 
 public abstract class Entity {
 
-	public static final int DEFAULT_HEALTH = 1;
+	public static final int DEFAULT_HEALTH = 3;
 	protected Handler handler;
 	protected float x, y;
 	protected int width, height;

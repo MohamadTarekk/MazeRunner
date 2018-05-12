@@ -7,5 +7,4 @@ public class GameRunner {
 		Game game = new Game("Maze Runner", 640, 480);
 		game.start();
 	}
-	
 }

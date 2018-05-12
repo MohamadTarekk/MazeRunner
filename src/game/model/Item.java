@@ -5,16 +5,16 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import game.controller.Handler;
-import game.graphics.Assets;
 
-public class Item {
+public abstract class Item {
 	
 	// Handler
 	
 	public static Item[] items = new Item[128];
-	public static Item woodItem = new Item(Assets.wood, "Wood", 0);
-	public static Item rockItem = new Item(Assets.rock, "Rock", 1);
-	public static Bomb bombItem = new Bomb(Assets.bomb, "Bomb", 2);
+	// public static Item woodItem = new Item(Assets.wood, "Wood", 0);
+	// public static Item rockItem = new Item(Assets.rock, "Rock", 1);
+	// public static Bomb healthBomb = new HealthBomb(Assets.healthBomb, "Bomb", 2);
+	// public static Gift healthGift = new HealthGift(Assets.healthGift, "Health", 3);
 	
 	// Class
 	
@@ -29,6 +29,7 @@ public class Item {
 	
 	protected int x, y, count;
 	protected boolean pickedUp = false;
+	protected boolean distructable = false;
 	
 	public Item(BufferedImage texture, String name, int id){
 		this.texture = texture;
@@ -45,7 +46,6 @@ public class Item {
 		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
 			pickedUp = true;
 			handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
-			System.out.println("a");
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class Item {
 	public void render(Graphics g, int x, int y){
 		g.drawImage(texture, x, y, ITEMWIDTH, ITEMHEIGHT, null);
 	}
-	
+	/*
 	public Item createNew(int count){
 		Item i = new Item(texture, name, id);
 		i.setPickedUp(true);
@@ -67,15 +67,19 @@ public class Item {
 	}
 	
 	public Item createNew(int x, int y){
+		Item i = new Item(texture, name, id);
+		i.setPosition(x, y);
+		return i;
+		/*
 		Item i;
 		if(name.equals("Bomb"))
-			i = new Bomb(texture, name, id);
+			i = new HealthBomb(texture, name, id);
 		else 
 			i = new Item(texture, name, id);
 		i.setPosition(x, y);
 		return i;
 	}
-	
+	//*/
 	public void setPosition(int x, int y){
 		this.x = x;
 		this.y = y;
@@ -84,7 +88,6 @@ public class Item {
 	}
 	
 	// Getters and Setters
-	
 	public Handler getHandler() {
 		return handler;
 	}
@@ -145,4 +148,11 @@ public class Item {
 		return pickedUp;
 	}
 
+	public boolean isDistructable() {
+		return distructable;
+	}
+
+	public void setDistructable(boolean distructable) {
+		this.distructable = distructable;
+	}
 }

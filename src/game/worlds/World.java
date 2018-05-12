@@ -3,7 +3,7 @@ package game.worlds;
 import java.awt.Graphics;
 
 import game.controller.Handler;
-import game.model.Item;
+import game.model.ItemFactory;
 import game.model.ItemManager;
 import game.model.entity.EntityManager;
 import game.model.entity.creatures.Player;
@@ -13,6 +13,8 @@ import game.view.Tile;
 
 public class World {
 
+	private ItemFactory itemFactory = new ItemFactory();
+	
 	private Handler handler;
 	private int width, height;
 	private int spawnX, spawnY;
@@ -26,8 +28,12 @@ public class World {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 		itemManager = new ItemManager(handler);
-		
-		itemManager.addItem(Item.bombItem.createNew(3*32, 32));
+		/*
+		itemManager.addItem(Item.healthBomb.createNew(3*32, 32));
+		itemManager.addItem(Item.healthGift.createNew(2*32, 32));
+		//*/
+		itemManager.addItem(itemFactory.getItem("Health Bomb", 3*32, 2*32));
+		itemManager.addItem(itemFactory.getItem("Health Gift", 2*32, 32));
 		// Temporary entity code!
 		/*
 		entityManager.addEntity(new Tree(handler, 132, 250));

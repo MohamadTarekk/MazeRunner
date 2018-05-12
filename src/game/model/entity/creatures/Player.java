@@ -9,7 +9,6 @@ import game.graphics.Animation;
 import game.graphics.Assets;
 import game.model.Inventory;
 import game.model.Item;
-import game.model.entity.Entity;
 
 
 public class Player extends Creature {
@@ -55,6 +54,30 @@ public class Player extends Creature {
 		inventory.tick();
 	}
 	
+	public boolean isBreakable(int tile) {
+		if(tile == 2)
+			return true;
+		return false;
+	}
+
+	public boolean isNearby(int i, int j) {
+		int xPos = (int) (x+bounds.x)/32;
+		int yPos = (int) (y+bounds.y)/32;
+		if(lastState.equals("Left")) {
+			if( (yPos == j) && (xPos - i == 1) )
+				return true;
+		} else if(lastState.equals("Right")) {
+			if( (yPos == j) && (xPos - i == -1) )
+				return true;
+		} else if(lastState.equals("Up")) {
+			if( (xPos == i) && (yPos - j == 1) )
+				return true;
+		} else
+			if( (xPos == i) && (yPos - j == -1) )
+				return true;
+		return false;
+	}
+	
 	private void checkAttacks(){
 		attackTimer += System.currentTimeMillis() - lastAttackTimer;
 		lastAttackTimer = System.currentTimeMillis();
@@ -87,7 +110,7 @@ public class Player extends Creature {
 		}
 		
 		attackTimer = 0;
-		
+		/* malhsash lazma dlwa2ty kda kda mafiish monsters lsa
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()){
 			if(e.equals(this))
 				continue;
@@ -95,7 +118,7 @@ public class Player extends Creature {
 				e.hurt(1);
 				return;
 			}
-		}
+		}*/
 		int[][] myTiles = handler.getWorld().getTiles();
 		for(int i = 0; i<myTiles.length; i++) {
 			for(int j = 0; j<myTiles.length; j++) {
@@ -105,26 +128,10 @@ public class Player extends Creature {
 		}
 		handler.getWorld().setTiles(myTiles);
 		for(Item item : handler.getWorld().getItemManager().getItems()) {
-			if(isNearby(item.getX()/32, item.getY()/32)) {
+			if(item.isDistructable() && isNearby(item.getX()/32, item.getY()/32)) {
 				item.setPickedUp(true);
 			}
 		}
-	}
-	
-	public boolean isBreakable(int tile) {
-		if(tile == 2)
-			return true;
-		return false;
-	}
-	
-	public boolean isNearby(int i, int j) {
-		int xPos = (int) (x+bounds.x)/32;
-		int yPos = (int) (y+bounds.y)/32;
-		if(xPos == i && Math.abs(yPos - j) <= 1)
-			return true;
-		if(yPos == j && Math.abs(xPos - i) <= 1)
-			return true;
-		return false;
 	}
 	
 	@Override
@@ -158,18 +165,35 @@ public class Player extends Creature {
 		inventory.render(g);
 	}
 	
-	private BufferedImage getCurrentAnimationFrame(){
-		if(xMove < 0){
+	String lastState = "Down";
+	private BufferedImage getCurrentAnimationFrame() {
+		if(xMove < 0) {
+			lastState = "Left";
 			return animLeft.getCurrentFrame();
-		}else if(xMove > 0){
+		} else if(xMove > 0) {
+			lastState = "Right";
 			return animRight.getCurrentFrame();
-		}else if(yMove < 0){
+		} else if(yMove < 0) {
+			lastState = "Up";
 			return animUp.getCurrentFrame();
-		}else{
+		} else if(yMove > 0) {
+			lastState = "Down";
 			return animDown.getCurrentFrame();
-		}
+		} else
+			return getLastStateImage();
 	}
 
+	private BufferedImage getLastStateImage() {
+		if(lastState.equals("Left")) {
+			return Assets.player_left[0];
+		} else if(lastState.equals("Right")) {
+			return Assets.player_right[0];
+		} else if(lastState.equals("Up")) {
+			return Assets.player_up[0];
+		} else
+			return Assets.player_down[0];
+	}
+	
 	public Inventory getInventory() {
 		return inventory;
 	}
