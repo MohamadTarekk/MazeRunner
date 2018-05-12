@@ -28,11 +28,11 @@ public class Player extends Creature {
 		bounds.width = 19;
 		bounds.height = 10;
 		
-		//Animatons
-		animDown = new Animation(500, Assets.player_down);
-		animUp = new Animation(500, Assets.player_up);
-		animLeft = new Animation(500, Assets.player_left);
-		animRight = new Animation(500, Assets.player_right);
+		//Animations
+		animDown = new Animation(135, Assets.player_down);
+		animUp = new Animation(135, Assets.player_up);
+		animLeft = new Animation(135, Assets.player_left);
+		animRight = new Animation(135, Assets.player_right);
 		
 		inventory = new Inventory(handler);
 	}

@@ -13,11 +13,11 @@ public abstract class UIObject {
 	
 	public UIObject(float x, float y, int width, int height){
 		this.x = x;
-		this.y = y;
+		this.y = y;	
 		this.width = width;
 		this.height = height;
 		bounds = new Rectangle((int) x, (int) y, width, height);
-	}
+	}		
 	
 	public abstract void tick();
 	

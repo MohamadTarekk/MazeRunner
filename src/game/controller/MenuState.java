@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import game.graphics.Assets;
 import game.ui.ClickListener;
+import game.ui.UIBackGround;
 import game.ui.UIImageButton;
 import game.ui.UIManager;
 
@@ -16,14 +17,38 @@ public class MenuState extends State {
 		super(handler);
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUIManager(uiManager);
+		uiManager.addObject(new UIBackGround(0, 0, 640, 480, Assets.uiBackGround));
 
-		uiManager.addObject(new UIImageButton(200, 200, 128, 64, Assets.btn_start, new ClickListener() {
+		uiManager.addObject(new UIImageButton(260, 150, 128, 64, Assets.btn_start, new ClickListener() {
 			@Override
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
 			}
 		}));
+		uiManager.addObject(new UIImageButton(260, 225, 128, 64, Assets.btn_load, new ClickListener() {
+			@Override
+			public void onClick() {
+				handler.getMouseManager().setUIManager(null);
+				System.exit(1);
+			}
+		}));
+		uiManager.addObject(new UIImageButton(260, 300, 128, 64, Assets.btn_help, new ClickListener() {
+			@Override
+			public void onClick() {
+				handler.getMouseManager().setUIManager(null);
+				System.exit(1);
+
+			}
+		}));
+		uiManager.addObject(new UIImageButton(260, 375, 128, 64, Assets.btn_exit, new ClickListener() {
+			@Override
+			public void onClick() {
+				handler.getMouseManager().setUIManager(null);
+				System.exit(1);
+			}
+		}));
+
 	}
 
 	@Override
@@ -31,8 +56,8 @@ public class MenuState extends State {
 		uiManager.tick();
 		
 		// Temporarily just go directly to the GameState, skip the menu state!
-		handler.getMouseManager().setUIManager(null);
-		State.setState(handler.getGame().gameState);
+		/*handler.getMouseManager().setUIManager(null);
+		State.setState(handler.getGame().gameState);*/
 	}
 
 	@Override
