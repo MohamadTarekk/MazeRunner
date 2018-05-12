@@ -7,8 +7,6 @@ import game.model.Item;
 import game.model.ItemManager;
 import game.model.entity.EntityManager;
 import game.model.entity.creatures.Player;
-import game.model.entity.statics.Rock;
-import game.model.entity.statics.Tree;
 import game.utils.Utils;
 import game.view.Tile;
 
@@ -31,13 +29,13 @@ public class World {
 		
 		itemManager.addItem(Item.bombItem.createNew(3*32, 32));
 		// Temporary entity code!
-		
+		/*
 		entityManager.addEntity(new Tree(handler, 132, 250));
 		entityManager.addEntity(new Rock(handler, 132, 450));
 		entityManager.addEntity(new Rock(handler, 350, 300));
 		entityManager.addEntity(new Rock(handler, 400, 345));
 		entityManager.addEntity(new Tree(handler, 625, 325));
-	
+		//*/
 		loadWorld(path);
 		
 		entityManager.getPlayer().setX(spawnX);
