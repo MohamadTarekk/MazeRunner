@@ -37,7 +37,6 @@ public abstract class Creature extends Entity {
 			}else{
 				x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
 			}
-			
 		}else if(xMove < 0){//Moving left
 			int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
 			
@@ -47,7 +46,7 @@ public abstract class Creature extends Entity {
 			}else{
 				x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
 			}
-			
+
 		}
 	}
 	
@@ -61,7 +60,6 @@ public abstract class Creature extends Entity {
 			}else{
 				y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
 			}
-			
 		}else if(yMove > 0){//Down
 			int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
 			

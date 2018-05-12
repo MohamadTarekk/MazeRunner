@@ -6,8 +6,9 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 	
 	private boolean[] keys, justPressed, cantPress;
-	public boolean up, down, left, right;
+	public boolean up, down, left, right , space;
 	public boolean aUp, aDown, aLeft, aRight;
+	public boolean isShooting = false;
 	
 	public KeyManager(){
 		keys = new boolean[256];
@@ -37,6 +38,7 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_DOWN];
 		left = keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_RIGHT];
+		space = keys[KeyEvent.VK_SPACE];
 	}
 	
 	public boolean keyJustPressed(int keyCode){
@@ -57,6 +59,8 @@ public class KeyManager implements KeyListener {
 		if(e.getKeyCode() < 0 || e.getKeyCode() >= keys.length)
 			return;
 		keys[e.getKeyCode()] = false;
+		if(e.getKeyCode() == KeyEvent.VK_SPACE)
+			isShooting = false;
 	}
 
 	@Override

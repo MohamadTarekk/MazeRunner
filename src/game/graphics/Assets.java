@@ -17,7 +17,7 @@ public class Assets {
 	public static BufferedImage wood;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
-	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load;
+	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets;
 	public static BufferedImage inventoryScreen;
 
 	public static void init(){
@@ -100,6 +100,13 @@ public class Assets {
 		btn_exit = new BufferedImage[2];
 		btn_exit[0] = sheet.crop(0, 80 * 6 , 185, 80);
 		btn_exit[1] = sheet.crop(0, 80 * 7 , 185, 80);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/bullets.png"));
+		bullets = new BufferedImage[4];
+		bullets[0] = sheet.crop(0, 0 , width, height); // left
+		bullets[1] = sheet.crop(width, 0 , width, height); // up
+		bullets[2] = sheet.crop(width * 2 , 0 , width, height); //right
+		bullets[3] = sheet.crop(width * 3, 0 , width, height); // down
+
 
 
 	}
