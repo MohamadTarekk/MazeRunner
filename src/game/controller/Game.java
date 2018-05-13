@@ -178,6 +178,7 @@ public class Game implements Runnable {
 		display.getFrame().addKeyListener(keyManager);
 		State.setState(gameState);
 		TimeCounter.counter = 0;
+		TimeCounter.strSecs = TimeCounter.strMins = TimeCounter.strHours = null;
 	}
 
 	private void newMenu() {

@@ -7,9 +7,9 @@ public class TimeCounter  {
 	
 	public static long counter = 0;
 	public static String time;
-    private  String strHours;
-    private  String strMins; 
-    private  String strSecs; 
+    public static String strHours;
+    public static String strMins; 
+    public static String strSecs; 
 
 	
 	

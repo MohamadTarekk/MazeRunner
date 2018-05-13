@@ -27,6 +27,7 @@ public class MenuState extends State {
 				handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
 				TimeCounter.counter = 0;
+				TimeCounter.strSecs = TimeCounter.strMins = TimeCounter.strHours = null;
 				timeCounter.runTimer();
 			}
 		}));
