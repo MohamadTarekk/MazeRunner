@@ -7,17 +7,20 @@ import java.awt.image.BufferedImage;
 import game.controller.Handler;
 import game.graphics.Animation;
 import game.graphics.Assets;
+import game.model.Armor;
 import game.model.Bullet;
+import game.model.ConcreteArmor;
 import game.model.Inventory;
 import game.model.Item;
 import game.model.Weapon;
+import game.model.WearingArmor;
 import game.model.entity.Entity;
 import game.model.observer.PlayerHealth;
 import game.model.observer.PlayerScore;
 import game.model.observer.Subject;
 
 
-public class Player extends Creature implements ConcretePlayer {
+public class Player extends Creature {
 	
 	//Animations
 	private Animation animDown, animUp, animLeft, animRight;
@@ -36,7 +39,7 @@ public class Player extends Creature implements ConcretePlayer {
 	@SuppressWarnings("unused")
 	private PlayerScore playerScore = new PlayerScore(subject,this);
 	//Armor
-	private boolean armored = false;
+	private ConcreteArmor armor;
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -45,6 +48,9 @@ public class Player extends Creature implements ConcretePlayer {
 		bounds.y = 22;
 		bounds.width = 19;
 		bounds.height = 9;
+		
+		//Armor
+		armor = new Armor();
 		
 		//Animations
 		animDown = new Animation(250, Assets.player_down);
@@ -272,22 +278,20 @@ public class Player extends Creature implements ConcretePlayer {
 	public void setEmptyMagazine(boolean emptyMagazine) {
 		this.emptyMagazine = emptyMagazine;
 	}
-
-	@Override
-	public void setArmored() {
+	
+	public void putArmor() {
 		
-		armored = true;
-	}
-
-	@Override
-	public void evade() {
-		
-		armored = false;
+		armor = new WearingArmor();
 	}
 	
 	public boolean isArmored() {
 		
-		return armored;
+		return armor.isArmored();
+	}
+	
+	public void loseArmor() {
+		
+		armor.sacrifice();
 	}
 	
 }

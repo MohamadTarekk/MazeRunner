@@ -1,19 +1,20 @@
 package game.model;
 
-import game.model.entity.creatures.ConcretePlayer;
-import game.model.entity.creatures.Player;
+public abstract class ArmorDecorator implements ConcreteArmor {
 
-public class ArmorDecorator implements ConcretePlayer{
+	protected Armor armor;
 	
-	protected Player player;
+	@Override
+	public boolean isArmored() {
 	
-	public void setArmored() {
-		
-		player.setArmored();
+		return armor.isArmored();
 	}
 	
-	public void evade() {
+	@Override
+	public void sacrifice() {
 		
-		player.evade();
+		armor.sacrifice();
 	}
+	
+
 }
