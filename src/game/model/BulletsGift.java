@@ -25,11 +25,12 @@ public class BulletsGift extends Gift {
 			pickedUp = true;
 			player.setAvailableBullets((player.getAvailableBullets()+2));
 			player.getInventory().addItem(this);
-
 			if(player.isEmptyMagazine())
 				player.setEmptyMagazine(false);
 			if(player.getAvailableBullets()>6)
 				player.setAvailableBullets(6);
+			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() +20);
+
 		}
 	}	
 }

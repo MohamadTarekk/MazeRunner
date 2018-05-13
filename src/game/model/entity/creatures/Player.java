@@ -12,9 +12,9 @@ import game.model.Inventory;
 import game.model.Item;
 import game.model.Weapon;
 import game.model.entity.Entity;
-import game.observer.PlayerHealth;
-import game.observer.PlayerScore;
-import game.observer.Subject;
+import game.model.observer.PlayerHealth;
+import game.model.observer.PlayerScore;
+import game.model.observer.Subject;
 
 
 public class Player extends Creature {
@@ -28,7 +28,7 @@ public class Player extends Creature {
 	Weapon weapon;
 	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
-	private int score = 0;
+	private int score = -20;
 	//Observer
 	private Subject subject = new Subject();
 	@SuppressWarnings("unused")
@@ -235,6 +235,7 @@ public class Player extends Creature {
 			return Assets.player_down[0];
 	}
 	
+	
 	public Inventory getInventory() {
 		return inventory;
 	}
@@ -269,4 +270,5 @@ public class Player extends Creature {
 	public void setEmptyMagazine(boolean emptyMagazine) {
 		this.emptyMagazine = emptyMagazine;
 	}
+	
 }
