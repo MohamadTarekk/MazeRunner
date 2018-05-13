@@ -174,6 +174,10 @@ public class Player extends Creature {
 		active = false;
 	}
 	
+	public void calculateScore() {
+		
+	}
+	
 	private void getInput(){
 		xMove = 0;
 		yMove = 0;
@@ -292,5 +296,4 @@ public class Player extends Creature {
 		
 		armor.sacrifice();
 	}
-	
 }

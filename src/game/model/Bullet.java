@@ -7,6 +7,7 @@ import java.util.Iterator;
 import game.controller.Handler;
 import game.graphics.Assets;
 import game.model.entity.Entity;
+import game.model.entity.creatures.Monster;
 
 public class Bullet {
 	
@@ -67,6 +68,10 @@ public class Bullet {
 							handler.getGameCamera().getyOffset()))) {
 				e.hurt(1);
 				die();
+				if(e instanceof Monster) 
+					if(e.getHealth() == 0)
+						handler.getWorld().getEntityManager().getPlayer().
+						setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 50);
 				return;
 			}
 		}
@@ -78,7 +83,7 @@ public class Bullet {
 					die();
 					if(myTiles[i][j] == 2) { // ID for the wood wall
 						myTiles[i][j] = 1;   // ID for the grass tile
-						handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 5);
+						handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 7);
 					}
 				}
 			}
