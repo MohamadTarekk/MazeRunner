@@ -14,7 +14,6 @@ public class Game implements Runnable {
 
 	private Display display;
 	private int width, height;
-	public String title;
 	
 	private boolean running = false;
 	private Thread thread;
@@ -38,16 +37,15 @@ public class Game implements Runnable {
 	
 	//Music player
 	
-	public Game(String title, int width, int height){
+	public Game(int width, int height){
 		this.width = width;
 		this.height = height;
-		this.title = title;
 		keyManager = new KeyManager();
 		mouseManager = new MouseManager();
 	}
 	
 	private void init(){
-		display = new Display(title, width, height);
+		display = new Display();
 		display.getFrame().addKeyListener(keyManager);
 		display.getFrame().addMouseListener(mouseManager);
 		display.getFrame().addMouseMotionListener(mouseManager);
@@ -165,14 +163,3 @@ public class Game implements Runnable {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-

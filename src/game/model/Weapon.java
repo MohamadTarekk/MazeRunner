@@ -7,7 +7,8 @@ import java.util.LinkedList;
 public class Weapon {
 
 	private LinkedList<Bullet> bullets = new LinkedList<Bullet>();
-		
+	
+	
 	public void tick() {
 		for(Bullet b : bullets) {
 			b.tick();

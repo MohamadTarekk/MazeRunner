@@ -18,7 +18,7 @@ public class Assets {
 	public static BufferedImage[] healthGift;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
-	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets;
+	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets , playerHealth;
 	public static BufferedImage inventoryScreen;
 
 	public static void init(){
@@ -123,6 +123,7 @@ public class Assets {
 		bullets[1] = sheet.crop(width, 0 , width, height); // up
 		bullets[2] = sheet.crop(width * 2 , 0 , width, height); //right
 		bullets[3] = sheet.crop(width * 3, 0 , width, height); // down
+		
 
 
 

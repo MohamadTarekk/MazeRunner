@@ -24,6 +24,7 @@ public class Player extends Creature {
 	Weapon weapon = new Weapon();
 	public static int firedBullets = 0;
 	private boolean emptyMagazine = false;
+	private int score = 0;
 	
 
 	
@@ -40,7 +41,6 @@ public class Player extends Creature {
 		animUp = new Animation(250, Assets.player_up);
 		animLeft = new Animation(250, Assets.player_left);
 		animRight = new Animation(250, Assets.player_right);
-		
 		inventory = new Inventory(handler);
 	}
 
@@ -172,7 +172,7 @@ public class Player extends Creature {
 				emptyMagazine = true;
 		}
 	}
-
+	
 
 	@Override
 	public void render(Graphics g) {
@@ -226,4 +226,12 @@ public class Player extends Creature {
 	public Weapon getWeapon() {
 		return weapon;
 	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}	
 }
