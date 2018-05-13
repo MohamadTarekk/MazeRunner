@@ -29,7 +29,7 @@ public class BulletsGift extends Gift {
 				player.setEmptyMagazine(false);
 			if(player.getAvailableBullets()>6)
 				player.setAvailableBullets(6);
-			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() +20);
+			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() +25);
 
 		}
 	}	

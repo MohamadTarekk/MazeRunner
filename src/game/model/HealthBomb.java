@@ -13,7 +13,7 @@ public class HealthBomb extends Bomb {
 	public void tick(){
 		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
 			pickedUp = true;
-			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 10);
+			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 5);
 			handler.getWorld().getEntityManager().getPlayer().hurt(1);
 		}
 	}	

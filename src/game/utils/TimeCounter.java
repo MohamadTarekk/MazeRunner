@@ -7,15 +7,15 @@ public class TimeCounter  {
 	
 	public static long counter = 0;
 	public static String time;
-    private String strHours;
-    private String strMins; 
-    private String strSecs; 
+    public static String strHours;
+    public static String strMins; 
+    public static String strSecs; 
 
 	
 	
 	
-	Timer timer = new Timer();
-	TimerTask task = new TimerTask() {
+	 Timer timer = new Timer();
+	 TimerTask task = new TimerTask() {
 		public void run(){
 		 time = getTime(counter);
 			System.out.println(time);
@@ -44,7 +44,7 @@ public class TimeCounter  {
 		return time;
 	}
 	
-	public  String getTimeAsString(long seconds , long minutes , long hours) {
+	public   String getTimeAsString(long seconds , long minutes , long hours) {
 	    strSecs = Long.toString(seconds);
 	    if(minutes < 10)
 	   	 strMins = "0" + Long.toString(minutes);
@@ -58,8 +58,15 @@ public class TimeCounter  {
 	    return time;
 	}
 
-	public void runTimer() {
+	public  void runTimer() {
 		timer.schedule(task,0,1000);
+	}
+	
+	
+	public  void stoptimer() {
+		task.cancel();
+		timer.cancel();
+		timer.purge();
 	}
 	
 	//SETTERS GETTERS

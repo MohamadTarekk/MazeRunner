@@ -7,10 +7,13 @@ import java.awt.image.BufferedImage;
 import game.controller.Handler;
 import game.graphics.Animation;
 import game.graphics.Assets;
+import game.model.Armor;
 import game.model.Bullet;
+import game.model.ConcreteArmor;
 import game.model.Inventory;
 import game.model.Item;
 import game.model.Weapon;
+import game.model.WearingArmor;
 import game.model.entity.Entity;
 import game.model.observer.PlayerHealth;
 import game.model.observer.PlayerScore;
@@ -28,13 +31,15 @@ public class Player extends Creature {
 	Weapon weapon;
 	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
-	private int score = -20;
+	private int score = -25;
 	//Observer
 	private Subject subject = new Subject();
 	@SuppressWarnings("unused")
 	private PlayerHealth playerHealth = new PlayerHealth(subject,this);
 	@SuppressWarnings("unused")
 	private PlayerScore playerScore = new PlayerScore(subject,this);
+	//Armor
+	private ConcreteArmor armor;
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -43,6 +48,9 @@ public class Player extends Creature {
 		bounds.y = 22;
 		bounds.width = 19;
 		bounds.height = 9;
+		
+		//Armor
+		armor = new Armor();
 		
 		//Animations
 		animDown = new Animation(250, Assets.player_down);
@@ -269,6 +277,21 @@ public class Player extends Creature {
 
 	public void setEmptyMagazine(boolean emptyMagazine) {
 		this.emptyMagazine = emptyMagazine;
+	}
+	
+	public void putArmor() {
+		
+		armor = new WearingArmor();
+	}
+	
+	public boolean isArmored() {
+		
+		return armor.isArmored();
+	}
+	
+	public void loseArmor() {
+		
+		armor.sacrifice();
 	}
 	
 }

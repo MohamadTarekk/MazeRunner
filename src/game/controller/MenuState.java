@@ -14,7 +14,7 @@ public class MenuState extends State {
 
 	private UIManager uiManager;
 	private TimeCounter timeCounter = new TimeCounter();
-
+	
 	public MenuState(Handler handler) {
 		super(handler);
 		uiManager = new UIManager(handler);
@@ -26,6 +26,8 @@ public class MenuState extends State {
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
+				TimeCounter.counter = 0;
+				TimeCounter.strSecs = TimeCounter.strMins = TimeCounter.strHours = null;
 				timeCounter.runTimer();
 			}
 		}));
@@ -67,5 +69,11 @@ public class MenuState extends State {
 	public void render(Graphics g) {
 		uiManager.render(g);
 	}
+
+	public TimeCounter getTimeCounter() {
+		return timeCounter;
+	}
+	
+	
 
 }

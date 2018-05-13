@@ -10,6 +10,7 @@ import game.graphics.GameCamera;
 import game.input.KeyManager;
 import game.input.MouseManager;
 import game.utils.Musicplayer;
+import game.utils.TimeCounter;
 import game.view.Display;
 
 
@@ -40,6 +41,7 @@ public class Game implements Runnable {
 	
 	//Music player
 	Musicplayer musicplayer = new Musicplayer("music.wav");
+	
 
 	public Game(int width, int height){
 		this.width = width;
@@ -175,6 +177,8 @@ public class Game implements Runnable {
 		keyManager = new KeyManager();
 		display.getFrame().addKeyListener(keyManager);
 		State.setState(gameState);
+		TimeCounter.counter = 0;
+		TimeCounter.strSecs = TimeCounter.strMins = TimeCounter.strHours = null;
 	}
 
 	private void newMenu() {
@@ -204,4 +208,14 @@ public class Game implements Runnable {
 			newMenu();
 		}
 	}
+
+	public State getGameState() {
+		return gameState;
+	}
+	
+	public State getMenuState() {
+		return menuState;
+	}
+
+	
 }

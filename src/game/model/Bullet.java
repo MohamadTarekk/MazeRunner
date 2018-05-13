@@ -79,6 +79,8 @@ public class Bullet {
 					die();
 					if(myTiles[i][j] == 2) { // ID for the wood wall
 						myTiles[i][j] = 1;   // ID for the grass tile
+						handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 25);
+
 					}
 				}
 			}
@@ -88,8 +90,15 @@ public class Bullet {
 			if(getCollisionBounds(handler.getGameCamera().getxOffset(), 
 					handler.getGameCamera().getyOffset()).intersects(i.bounds)) {
 				die();
-				if(i.isDistructable())
+				if(i.isDistructable()) {
+					if(i instanceof Bomb)
+						handler.getWorld().getEntityManager().getPlayer().
+						setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 25);
+					if(i instanceof Gift)
+						handler.getWorld().getEntityManager().getPlayer().
+						setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 5);
 					i.setPickedUp(true);
+				}
 			}
 		}
 	}

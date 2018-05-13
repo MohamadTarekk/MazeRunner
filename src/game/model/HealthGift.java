@@ -28,7 +28,7 @@ public class HealthGift extends Gift {
 				player.getHealth()<Entity.DEFAULT_HEALTH){
 			pickedUp = true;
 			player.setHealth(player.getHealth()+1);
-			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() +20);
+			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() +25);
 		}
 	}	
 	
