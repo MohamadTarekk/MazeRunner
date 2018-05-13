@@ -57,7 +57,7 @@ public class Display {
 	}
 
 	public int die() {
-		return JOptionPane.showOptionDialog(null, "You Lose!", "Damn it!", JOptionPane.OK_CANCEL_OPTION,
+		return JOptionPane.showOptionDialog(null, "You Lose!", "Game Over", JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Play Again", "Back To Main Menu"}, // this is the array
 		        "default");
 	}

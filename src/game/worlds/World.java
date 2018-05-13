@@ -29,33 +29,40 @@ public class World {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 32, 32));
 		itemManager = new ItemManager(handler);
-		/*
-		itemManager.addItem(Item.healthBomb.createNew(3*32, 32));
-		itemManager.addItem(Item.healthGift.createNew(2*32, 32));
-		//*/
 		
-		itemManager.addItem(itemFactory.getItem("Health Bomb", 9*32, 1*32));
-		itemManager.addItem(itemFactory.getItem("Health Gift", 2*32, 32));
-		itemManager.addItem(itemFactory.getItem("Armor Gift", 3*32, 32));
-		itemManager.addItem(itemFactory.getItem("Bullets Gift", 3*32, 2*32));
+		itemManager.addItem(itemFactory.getItem("Health Bomb", 15*32, 7*32));
+		itemManager.addItem(itemFactory.getItem("Health Bomb", 23*32, 19*32));
+		itemManager.addItem(itemFactory.getItem("Health Bomb", 2*32, 19*32));
+		
 		itemManager.addItem(itemFactory.getItem("Big Health Bomb", 10*32, 32));
-		//*/
-		// Temporary entity code!
-		/*
-		entityManager.addEntity(new Tree(handler, 132, 250));
-		entityManager.addEntity(new Rock(handler, 132, 450));
-		entityManager.addEntity(new Rock(handler, 350, 300));
-		entityManager.addEntity(new Rock(handler, 400, 345));
-		entityManager.addEntity(new Tree(handler, 625, 325));
-		//*/
+		itemManager.addItem(itemFactory.getItem("Big Health Bomb", 5*32, 13*32));
+		itemManager.addItem(itemFactory.getItem("Big Health Bomb", 13*32, 29*32));
+
+		itemManager.addItem(itemFactory.getItem("Health Gift", 11*32, 32));
+		itemManager.addItem(itemFactory.getItem("Health Gift", 21*32, 9*32));
+		itemManager.addItem(itemFactory.getItem("Health Gift", 23*32, 25*32));
+		itemManager.addItem(itemFactory.getItem("Health Gift", 11*32, 17*32));
+		
+		itemManager.addItem(itemFactory.getItem("Armor Gift", 32, 5*32));
+		itemManager.addItem(itemFactory.getItem("Armor Gift", 7*32, 25*32));
+		itemManager.addItem(itemFactory.getItem("Armor Gift", 27*32, 5*32));
+		
+		itemManager.addItem(itemFactory.getItem("Bullets Gift", 5*32, 7*32));
+		itemManager.addItem(itemFactory.getItem("Bullets Gift", 29*32, 21*32));
+		itemManager.addItem(itemFactory.getItem("Bullets Gift", 15*32, 23*32));
+
+		
 		loadWorld(path);
+		
 		// To initialize the inventory
 		itemManager.addItem(itemFactory.getItem("Bullets Gift", spawnX, spawnY));
 
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 		
-		entityManager.addEntity(new Monster(handler, 32, 2*32));;
+		entityManager.addEntity(new Monster(handler, 9*32, 5*32));
+		entityManager.addEntity(new Monster(handler, 19*32, 15*32));
+		entityManager.addEntity(new Monster(handler, 6*32, 23*32));
 	}
 	
 	public void tick(){

@@ -19,11 +19,11 @@ public class ItemFactory {
 			hg.setPosition(x, y);
 			return hg;
 		} else if(name.equals("Armor Gift")){
-			ArmorGift ag = new ArmorGift(Assets.armorGift, "Armor Gift", 3);
+			ArmorGift ag = new ArmorGift(Assets.armorGift, "Armor", 3);
 			ag.setPosition(x, y);
 			return ag;
 		} else if(name.equals("Bullets Gift")) {
-			BulletsGift bg = new BulletsGift(Assets.bulletsGift, "Bullets Gift", 4);
+			BulletsGift bg = new BulletsGift(Assets.bulletsGift, "Bullets", 4);
 			bg.setPosition(x, y);
 			return bg;
 		} else {
