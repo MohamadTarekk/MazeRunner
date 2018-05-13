@@ -182,7 +182,7 @@ public class Player extends Creature {
 		if(handler.getKeyManager().right) {
 			xMove = speed;
 		}
-		if(handler.getKeyManager().space && !handler.getKeyManager().isShooting &&!emptyMagazine) {
+		if(handler.getKeyManager().space && !handler.getKeyManager().isShooting && availableBullets>0) {
 			handler.getKeyManager().isShooting = true;
 			weapon.addBullet(new Bullet(x-handler.getGameCamera().getxOffset()
 					,y - handler.getGameCamera().getyOffset(),lastState, handler));
