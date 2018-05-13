@@ -11,14 +11,10 @@ public class TimeCounter  {
     public static String strMins; 
     public static String strSecs; 
 
-	
-	
-	
 	 Timer timer = new Timer();
 	 TimerTask task = new TimerTask() {
 		public void run(){
 		 time = getTime(counter);
-			System.out.println(time);
 			counter++;
 		}	
 	};
