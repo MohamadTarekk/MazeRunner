@@ -92,7 +92,7 @@ public class World {
 		return t;
 	}
 	
-	private void loadWorld(String path){
+	public void loadWorld(String path){
 		String file = Utils.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");
 		width = Utils.parseInt(tokens[0]);
@@ -143,4 +143,41 @@ public class World {
 	public void setTiles(int[][] tiles) {
 		this.tiles = tiles;
 	}
+
+	public ItemFactory getItemFactory() {
+		return itemFactory;
+	}
+
+	public void setItemFactory(ItemFactory itemFactory) {
+		this.itemFactory = itemFactory;
+	}
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public void setSpawnX(int spawnX) {
+		this.spawnX = spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}
+
+	public void setSpawnY(int spawnY) {
+		this.spawnY = spawnY;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+	
 }

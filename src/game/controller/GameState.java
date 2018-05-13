@@ -35,4 +35,12 @@ public class GameState extends State {
 	}
 
 
+	public World getWorld() {
+		return world;
+	}
+
+	public void setWorld(World world) {
+		this.world = world;
+	}
+
 }
