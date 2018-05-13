@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import game.graphics.Animation;
 import game.graphics.Assets;
+import game.model.entity.Entity;
 import game.model.entity.creatures.Player;
 
 public class HealthGift extends Gift {
@@ -24,7 +25,7 @@ public class HealthGift extends Gift {
 		animation.tick();
 		player = handler.getWorld().getEntityManager().getPlayer();
 		if(player.getCollisionBounds(0f, 0f).intersects(bounds) &&
-				player.getHealth()<3){
+				player.getHealth()<Entity.DEFAULT_HEALTH){
 			pickedUp = true;
 			player.setHealth(player.getHealth()+1);
 		}

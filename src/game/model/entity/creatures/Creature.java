@@ -30,16 +30,17 @@ public abstract class Creature extends Entity {
 	public void moveX(){
 		if(xMove > 0){//Moving right
 			int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
-			
+
 			if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
 					!collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
 				x += xMove;
 			}else{
 				x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
+				
 			}
 		}else if(xMove < 0){//Moving left
 			int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
-			
+
 			if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
 					!collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
 				x += xMove;
@@ -53,7 +54,7 @@ public abstract class Creature extends Entity {
 	public void moveY(){
 		if(yMove < 0){//Up
 			int ty = (int) (y + yMove + bounds.y) / Tile.TILEHEIGHT;
-			
+
 			if(!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty) &&
 					!collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
 				y += yMove;
@@ -76,7 +77,17 @@ public abstract class Creature extends Entity {
 	protected boolean collisionWithTile(int x, int y){
 		return handler.getWorld().getTile(x, y).isSolid();
 	}
-	
+	/*
+	protected boolean collisionWithMonster(int x, int y) {
+		for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
+			if(Math.abs((int) e.getX() - x*32) <= 1 && Math.abs((int) e.getY() - y*32) <= 1 && e instanceof Monster) {
+				System.out.println('s');
+				return true;
+			}
+		}
+		return false;
+	}
+	//*/
 	//GETTERS SETTERS
 
 	public float getxMove() {

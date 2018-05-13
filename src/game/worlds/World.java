@@ -6,6 +6,7 @@ import game.controller.Handler;
 import game.model.ItemFactory;
 import game.model.ItemManager;
 import game.model.entity.EntityManager;
+import game.model.entity.creatures.Monster;
 import game.model.entity.creatures.Player;
 import game.utils.Utils;
 import game.view.Tile;
@@ -32,9 +33,13 @@ public class World {
 		itemManager.addItem(Item.healthBomb.createNew(3*32, 32));
 		itemManager.addItem(Item.healthGift.createNew(2*32, 32));
 		//*/
-		itemManager.addItem(itemFactory.getItem("Health Bomb", 3*32, 2*32));
-		itemManager.addItem(itemFactory.getItem("Health Gift", 2*32, 32));
 		
+		itemManager.addItem(itemFactory.getItem("Health Bomb", 9*32, 1*32));
+		itemManager.addItem(itemFactory.getItem("Health Gift", 2*32, 32));
+		itemManager.addItem(itemFactory.getItem("Armor Gift", 3*32, 32));
+		itemManager.addItem(itemFactory.getItem("Bullets Gift", 3*32, 2*32));
+		itemManager.addItem(itemFactory.getItem("Big Health Bomb", 10*32, 32));
+		//*/
 		// Temporary entity code!
 		/*
 		entityManager.addEntity(new Tree(handler, 132, 250));
@@ -45,8 +50,13 @@ public class World {
 		//*/
 		loadWorld(path);
 		
+		// To initialize the inventory
+		itemManager.addItem(itemFactory.getItem("Bullets Gift", spawnX, spawnY));
+
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
+		
+		entityManager.addEntity(new Monster(handler, 32, 2*32));;
 	}
 	
 	public void tick(){
