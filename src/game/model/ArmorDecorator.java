@@ -4,6 +4,11 @@ public abstract class ArmorDecorator implements ConcreteArmor {
 
 	protected Armor armor;
 	
+	public ArmorDecorator(Armor armor) {
+		
+		this.armor = armor;
+	}
+
 	@Override
 	public boolean isArmored() {
 	
