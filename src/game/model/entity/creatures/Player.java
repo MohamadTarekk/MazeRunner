@@ -31,7 +31,7 @@ public class Player extends Creature {
 	Weapon weapon;
 	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
-	private int score = -25;
+	private int score = -20;
 	//Observer
 	private Subject subject = new Subject();
 	@SuppressWarnings("unused")
@@ -48,7 +48,6 @@ public class Player extends Creature {
 		bounds.y = 22;
 		bounds.width = 19;
 		bounds.height = 9;
-		
 		//Armor
 		armor = new Armor();
 		
@@ -281,7 +280,7 @@ public class Player extends Creature {
 	
 	public void putArmor() {
 		
-		armor = new WearingArmor();
+		armor = new WearingArmor(new Armor());
 	}
 	
 	public boolean isArmored() {

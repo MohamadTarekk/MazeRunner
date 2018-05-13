@@ -2,9 +2,9 @@ package game.model;
 
 public class WearingArmor extends ArmorDecorator {
 	
-	public WearingArmor() {
+	public WearingArmor(Armor armor) {
 		
-		armor = new Armor();
+		super(armor);
 		armor.putArmor();
 	}
 }

@@ -63,8 +63,7 @@ public class Bullet {
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()){
 			if(e.equals(handler.getWorld().getEntityManager().getPlayer()))
 				continue;
-			if(e.getCollisionBounds(handler.getGameCamera().getxOffset(),
-					handler.getGameCamera().getyOffset()).intersects(getCollisionBounds(handler.getGameCamera().getxOffset(),
+			if(e.getCollisionBounds(0f,0f).intersects(getCollisionBounds(handler.getGameCamera().getxOffset(),
 							handler.getGameCamera().getyOffset()))) {
 				e.hurt(1);
 				die();
@@ -79,8 +78,7 @@ public class Bullet {
 					die();
 					if(myTiles[i][j] == 2) { // ID for the wood wall
 						myTiles[i][j] = 1;   // ID for the grass tile
-						handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 25);
-
+						handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 5);
 					}
 				}
 			}
@@ -96,7 +94,7 @@ public class Bullet {
 						setScore(handler.getWorld().getEntityManager().getPlayer().getScore() + 25);
 					if(i instanceof Gift)
 						handler.getWorld().getEntityManager().getPlayer().
-						setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 5);
+						setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 10);
 					i.setPickedUp(true);
 				}
 			}

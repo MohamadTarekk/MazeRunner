@@ -18,7 +18,7 @@ public class BigHealthBomb extends Bomb {
 		if(player.getCollisionBounds(0f, 0f).intersects(bounds)){
 			pickedUp = true;
 			if(!player.isArmored()) {
-				player.setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 5);
+				player.setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 10);
 				player.hurt(2);
 			} else {
 				player.loseArmor();
