@@ -17,7 +17,7 @@ import game.model.observer.PlayerScore;
 import game.model.observer.Subject;
 
 
-public class Player extends Creature {
+public class Player extends Creature implements ConcretePlayer {
 	
 	//Animations
 	private Animation animDown, animUp, animLeft, animRight;
@@ -35,6 +35,8 @@ public class Player extends Creature {
 	private PlayerHealth playerHealth = new PlayerHealth(subject,this);
 	@SuppressWarnings("unused")
 	private PlayerScore playerScore = new PlayerScore(subject,this);
+	//Armor
+	private boolean armored = false;
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -269,6 +271,23 @@ public class Player extends Creature {
 
 	public void setEmptyMagazine(boolean emptyMagazine) {
 		this.emptyMagazine = emptyMagazine;
+	}
+
+	@Override
+	public void setArmored() {
+		
+		armored = true;
+	}
+
+	@Override
+	public void evade() {
+		
+		armored = false;
+	}
+	
+	public boolean isArmored() {
+		
+		return armored;
 	}
 	
 }
