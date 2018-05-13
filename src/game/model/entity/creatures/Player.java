@@ -48,7 +48,6 @@ public class Player extends Creature {
 		bounds.y = 22;
 		bounds.width = 19;
 		bounds.height = 9;
-		
 		//Armor
 		armor = new Armor();
 		
