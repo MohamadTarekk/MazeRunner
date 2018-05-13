@@ -8,8 +8,6 @@ public class Assets {
 	private static final int width = 32, height = 32;
 	
 	public static Font font28;
-
-
 	public static BufferedImage healthBomb, bigHealthBomb;
 	public static BufferedImage armorGift, bulletsGift;
 	public static BufferedImage stone0, stone5, stone6, stone7, stone8, stone9;
@@ -18,12 +16,13 @@ public class Assets {
 	public static BufferedImage wood;
 	public static BufferedImage[] healthGift;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
+	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
+	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets , playerHealth;
 	public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
-	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets;
 	public static BufferedImage inventoryScreen;
 
 	public static void init(){
-		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
+		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 16);
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 		
@@ -130,6 +129,7 @@ public class Assets {
 		bullets[1] = sheet.crop(width, 0 , width, height); // up
 		bullets[2] = sheet.crop(width * 2 , 0 , width, height); //right
 		bullets[3] = sheet.crop(width * 3, 0 , width, height); // down
+		
 
 
 

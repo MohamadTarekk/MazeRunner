@@ -11,32 +11,34 @@ public class Display {
 	private JFrame frame;
 	private Canvas canvas;
 	
-	private String title;
-	private int width, height;
-	
-	public Display(String title, int width, int height){
-		this.title = title;
-		this.width = width;
-		this.height = height;
+	public static final int WIDTH = 640;
+	public static final int HEIGHT = WIDTH / 4 * 3;
+	public static String TITLE = "The Maze Runner";
 		
-		createDisplay();
+	private static Display singleInstance = null;
+	
+	public static Display getDisplay() {
+		
+		 if(singleInstance == null) {
+			 singleInstance = new Display();
+		 }
+		 return singleInstance;
 	}
 	
-	private void createDisplay(){
-		frame = new JFrame(title);
-		frame.setSize(width, height);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private Display(){
+		frame = new JFrame(TITLE);
 		frame.setResizable(false);
+		frame.setSize(WIDTH, HEIGHT);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
 		canvas = new Canvas();
-		canvas.setPreferredSize(new Dimension(width, height));
-		canvas.setMaximumSize(new Dimension(width, height));
-		canvas.setMinimumSize(new Dimension(width, height));
+		canvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		canvas.setMaximumSize(new Dimension(WIDTH, HEIGHT));
+		canvas.setMinimumSize(new Dimension(WIDTH, HEIGHT));
 		canvas.setFocusable(false);
-		
-		frame.add(canvas);
+		frame.getContentPane().add(canvas);
 		frame.pack();
 	}
 

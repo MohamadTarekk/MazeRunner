@@ -9,6 +9,7 @@ import game.graphics.Assets;
 import game.graphics.GameCamera;
 import game.input.KeyManager;
 import game.input.MouseManager;
+import game.utils.Musicplayer;
 import game.view.Display;
 
 
@@ -16,7 +17,6 @@ public class Game implements Runnable {
 
 	private Display display;
 	private int width, height;
-	public String title;
 	
 	private boolean running = false;
 	private Thread thread;
@@ -39,17 +39,17 @@ public class Game implements Runnable {
 	private Handler handler;
 	
 	//Music player
-	
-	public Game(String title, int width, int height){
+	Musicplayer musicplayer = new Musicplayer("music.wav");
+
+	public Game(int width, int height){
 		this.width = width;
 		this.height = height;
-		this.title = title;
 		keyManager = new KeyManager();
 		mouseManager = new MouseManager();
 	}
 	
 	private void init(){
-		display = new Display(title, width, height);
+		display = Display.getDisplay();
 		display.getFrame().addKeyListener(keyManager);
 		display.getFrame().addMouseListener(mouseManager);
 		display.getFrame().addMouseMotionListener(mouseManager);
@@ -94,7 +94,7 @@ public class Game implements Runnable {
 	public void run(){
 		
 		init();
-		
+		musicplayer.run();
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
@@ -169,7 +169,7 @@ public class Game implements Runnable {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void newGame() {
 		gameState = new GameState(handler);
 		keyManager = new KeyManager();

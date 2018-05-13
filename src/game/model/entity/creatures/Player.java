@@ -12,6 +12,9 @@ import game.model.Inventory;
 import game.model.Item;
 import game.model.Weapon;
 import game.model.entity.Entity;
+import game.observer.PlayerHealth;
+import game.observer.PlayerScore;
+import game.observer.Subject;
 
 
 public class Player extends Creature {
@@ -25,6 +28,13 @@ public class Player extends Creature {
 	Weapon weapon;
 	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
+	private int score = 0;
+	//Observer
+	private Subject subject = new Subject();
+	@SuppressWarnings("unused")
+	private PlayerHealth playerHealth = new PlayerHealth(subject,this);
+	@SuppressWarnings("unused")
+	private PlayerScore playerScore = new PlayerScore(subject,this);
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -39,7 +49,6 @@ public class Player extends Creature {
 		animUp = new Animation(250, Assets.player_up);
 		animLeft = new Animation(250, Assets.player_left);
 		animRight = new Animation(250, Assets.player_right);
-		
 		inventory = new Inventory(handler);
 	}
 
@@ -182,13 +191,14 @@ public class Player extends Creature {
 				emptyMagazine = true;
 		}
 	}
-
+	
 
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), 
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		weapon.render(g);
+		subject.setState(score,health,g);
 	}
 	
 	
@@ -237,6 +247,13 @@ public class Player extends Creature {
 		return weapon;
 	}
 
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}	
 	public int getAvailableBullets() {
 		return availableBullets;
 	}

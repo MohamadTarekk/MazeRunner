@@ -15,7 +15,8 @@ public abstract class Bomb extends Item {
 
 	@Override
 	public void tick() {
-		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
+		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(
+				handler.getGameCamera().getxOffset(), handler.getGameCamera().getyOffset()).intersects(bounds)){
 			pickedUp = true;
 			handler.getWorld().getEntityManager().getPlayer().hurt(1);
 		}

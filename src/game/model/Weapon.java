@@ -9,6 +9,7 @@ public class Weapon {
 
 	Handler handler;
 	private LinkedList<Bullet> bullets = new LinkedList<Bullet>();
+	
 		
 	public Weapon(Handler handler) {
 		this.handler = handler;
