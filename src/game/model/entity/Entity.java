@@ -47,7 +47,11 @@ public abstract class Entity {
 				continue;
 			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))) {
 				if(e instanceof Monster) {
-					handler.getWorld().getEntityManager().getPlayer().setAvailableBullets(0);
+					if(!handler.getWorld().getEntityManager().getPlayer().isArmored()) {
+						handler.getWorld().getEntityManager().getPlayer().setAvailableBullets(0);
+					} else {
+						handler.getWorld().getEntityManager().getPlayer().loseArmor();
+					}
 				}
 				return true;
 			}

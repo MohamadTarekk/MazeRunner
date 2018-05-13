@@ -284,7 +284,7 @@ public class Player extends Creature {
 	
 	public void putArmor() {
 		
-		armor = new WearingArmor();
+		armor = new WearingArmor(new Armor());
 	}
 	
 	public boolean isArmored() {
