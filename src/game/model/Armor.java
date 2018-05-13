@@ -2,29 +2,31 @@ package game.model;
 
 public class Armor implements ConcreteArmor {
 
-	private boolean armor;
+	private boolean armored;
 	
 	public Armor() {
 
-		armor = false;
+		setArmored(false);
 	}
 	
 	public void putArmor() {
 		
-		armor = true;
+		setArmored(true);
 	}
 	
 	@Override
 	public boolean isArmored() {
 	
-		return armor;
+		return armored;
+	}
+	
+	public void setArmored(boolean armored) {
+		this.armored = armored;
 	}
 	
 	@Override
 	public void sacrifice() {
 		
-		armor = false;
+		setArmored(false);
 	}
-	
-
 }

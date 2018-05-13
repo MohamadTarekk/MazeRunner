@@ -15,6 +15,4 @@ public abstract class ArmorDecorator implements ConcreteArmor {
 		
 		armor.sacrifice();
 	}
-	
-
 }
