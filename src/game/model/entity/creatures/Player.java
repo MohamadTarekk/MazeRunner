@@ -141,7 +141,8 @@ public class Player extends Creature {
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()){
 			if(e.equals(this))
 				continue;
-			if(isNearby((int) e.getX()/32, (int) e.getY()/32)){
+			if(isNearby((int) Math.ceil(e.getX()/32), (int) Math.ceil(e.getY()/32))) {
+				System.out.println("a");
 				e.hurt(1);
 				return;
 			}
