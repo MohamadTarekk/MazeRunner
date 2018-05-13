@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import game.controller.Handler;
 import game.graphics.Assets;
 import game.graphics.Text;
+import game.utils.TimeCounter;
 
 public class Inventory {
 
@@ -33,12 +34,24 @@ public class Inventory {
 		inventoryItems = new ArrayList<Item>();
 	}
 	
+	ArrayList<Long> paused = new ArrayList<Long>();
+
 	public void tick(){
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E))
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
 			active = !active;
-		if(!active)
-			return;
-		
+			if(active)
+			{
+				paused.add(TimeCounter.counter);
+			}else {
+				TimeCounter.counter = paused.get(0);
+				paused.clear();
+
+			}
+		}
+
+		if(!active) {
+			return;	
+		}		
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W))
 			selectedItem--;
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S))
@@ -103,6 +116,8 @@ public class Inventory {
 			i.setCount(i.getCount());
 		}
 	}
+	
+
 	
 	// GETTERS SETTERS
 
