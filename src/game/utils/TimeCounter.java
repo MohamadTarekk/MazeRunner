@@ -5,8 +5,15 @@ import java.util.TimerTask;
 
 public class TimeCounter  {
 	
-	long counter = 0;
+	public static long counter = 0;
 	public static String time;
+    private String strHours;
+    private String strMins; 
+    private String strSecs; 
+
+	
+	
+	
 	Timer timer = new Timer();
 	TimerTask task = new TimerTask() {
 		public void run(){
@@ -38,23 +45,15 @@ public class TimeCounter  {
 	}
 	
 	public  String getTimeAsString(long seconds , long minutes , long hours) {
-	    String strHours;
-	    String strMins; 
-	    String strSecs; 
-
-	    	strSecs = Long.toString(seconds);
-	   
+	    strSecs = Long.toString(seconds);
 	    if(minutes < 10)
 	   	 strMins = "0" + Long.toString(minutes);
 	   else
 		   strMins = Long.toString(minutes);
-	    
 	    if(hours < 10)
 	    	strHours = "0" + Long.toString(hours);
-	      else
-	    	  strHours = Long.toString(hours);
-	    	
-	        
+	    else
+	    	strHours = Long.toString(hours);
 	    String time = strHours + ":" + strMins + ":" + strSecs;
 	    return time;
 	}
@@ -62,6 +61,10 @@ public class TimeCounter  {
 	public void runTimer() {
 		timer.schedule(task,0,1000);
 	}
+	
+	//SETTERS GETTERS
+	
+	
 	
 	
 		

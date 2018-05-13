@@ -1,4 +1,4 @@
-package game.observer;
+package game.model.observer;
 
 import java.awt.Graphics;
 import java.util.ArrayList;

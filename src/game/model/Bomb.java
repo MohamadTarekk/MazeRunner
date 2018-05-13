@@ -18,6 +18,7 @@ public abstract class Bomb extends Item {
 		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(
 				handler.getGameCamera().getxOffset(), handler.getGameCamera().getyOffset()).intersects(bounds)){
 			pickedUp = true;
+			handler.getWorld().getEntityManager().getPlayer().setScore(handler.getWorld().getEntityManager().getPlayer().getScore() - 10);
 			handler.getWorld().getEntityManager().getPlayer().hurt(1);
 		}
 	}
