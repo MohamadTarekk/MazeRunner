@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Display {
 
@@ -47,4 +48,15 @@ public class Display {
 		return frame;
 	}
 	
+	public int win() {
+		return JOptionPane.showOptionDialog(null, "You Win!", "Congratulations", JOptionPane.OK_CANCEL_OPTION,
+				JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Play Again", "Back To Main Menu"}, // this is the array
+		        "default");
+	}
+
+	public int die() {
+		return JOptionPane.showOptionDialog(null, "You Lose!", "Damn it!", JOptionPane.OK_CANCEL_OPTION,
+				JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Play Again", "Back To Main Menu"}, // this is the array
+		        "default");
+	}
 }

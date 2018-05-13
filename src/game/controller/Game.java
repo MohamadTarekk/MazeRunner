@@ -3,6 +3,8 @@ package game.controller;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.JOptionPane;
+
 import game.graphics.Assets;
 import game.graphics.GameCamera;
 import game.input.KeyManager;
@@ -137,6 +139,10 @@ public class Game implements Runnable {
 		return gameCamera;
 	}
 	
+	public void setGameCamera(GameCamera gameCamera) {
+		this.gameCamera = gameCamera;
+	}
+
 	public int getWidth(){
 		return width;
 	}
@@ -163,16 +169,39 @@ public class Game implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	private void newGame() {
+		gameState = new GameState(handler);
+		keyManager = new KeyManager();
+		display.getFrame().addKeyListener(keyManager);
+		State.setState(gameState);
+	}
+
+	private void newMenu() {
+		gameState = new GameState(handler);
+		menuState = new MenuState(handler);
+		keyManager = new KeyManager();
+		display.getFrame().addKeyListener(keyManager);
+		State.setState(menuState);
+	}
+
+	public void win() {
+		int response = display.win();
+		handler = new Handler(this);
+		if(response == JOptionPane.OK_OPTION) {
+			newGame();
+		} else {
+			newMenu();
+		}
+	}
+
+	public void die() {
+		int response = display.die();
+		handler = new Handler(this);
+		if(response == JOptionPane.OK_OPTION) {
+			newGame();
+		} else {
+			newMenu();
+		}
+	}
 }
-
-
-
-
-
-
-
-
-
-
-

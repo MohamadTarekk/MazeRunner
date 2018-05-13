@@ -24,4 +24,12 @@ public class GameState extends State {
 		world.render(g);
 	}
 
+	public World getWorld() {
+		return world;
+	}
+
+	public void setWorld(World world) {
+		this.world = world;
+	}
+
 }

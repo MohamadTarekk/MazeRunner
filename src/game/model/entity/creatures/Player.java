@@ -43,6 +43,17 @@ public class Player extends Creature {
 		inventory = new Inventory(handler);
 	}
 
+	public void move(){
+		if(!checkEntityCollisions(xMove, 0f))
+			moveX();
+		if(!checkEntityCollisions(0f, yMove))
+			moveY();
+		if(x>32*31) {
+			handler.getGame().win();
+			active = false;
+		}
+	}
+
 	@Override
 	public void tick() {
 		//Animations
@@ -142,8 +153,9 @@ public class Player extends Creature {
 	}
 	
 	@Override
-	public void die(){
-		System.out.println("You lose");
+	public void die() {
+		handler.getGame().die();
+		active = false;
 	}
 	
 	private void getInput(){
@@ -158,8 +170,9 @@ public class Player extends Creature {
 			yMove = speed;
 		if(handler.getKeyManager().left)
 			xMove = -speed;
-		if(handler.getKeyManager().right)
+		if(handler.getKeyManager().right) {
 			xMove = speed;
+		}
 		if(handler.getKeyManager().space && !handler.getKeyManager().isShooting &&!emptyMagazine) {
 			handler.getKeyManager().isShooting = true;
 			weapon.addBullet(new Bullet(x-handler.getGameCamera().getxOffset()
