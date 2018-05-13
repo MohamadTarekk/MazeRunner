@@ -60,7 +60,7 @@ public class World {
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 		
-		entityManager.addEntity(new Monster(handler, 9*32, 5*32));
+		entityManager.addEntity(new Monster(handler, 9*32, 4*32));
 		entityManager.addEntity(new Monster(handler, 19*32, 15*32));
 		entityManager.addEntity(new Monster(handler, 6*32, 23*32));
 	}

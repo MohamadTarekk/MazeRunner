@@ -291,6 +291,7 @@ public class Player extends Creature {
 	public void loseArmor() {
 		
 		armor.sacrifice();
+		inventory.removeArmor();
 	}
 	
 }

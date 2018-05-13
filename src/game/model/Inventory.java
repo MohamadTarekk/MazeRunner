@@ -89,6 +89,15 @@ public class Inventory {
 		inventoryItems.add(item);
 	}
 	
+	public void removeArmor(){
+		for(Item i : inventoryItems){
+			if(i instanceof ArmorGift){
+				inventoryItems.remove(i);
+				return;
+			}
+		}
+	}
+	
 	public void updateCount() {
 		for(Item i : inventoryItems) {
 			i.setCount(i.getCount());
