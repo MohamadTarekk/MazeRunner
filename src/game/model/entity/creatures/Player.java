@@ -31,7 +31,7 @@ public class Player extends Creature {
 	Weapon weapon;
 	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
-	private int score = -25;
+	private int score = -20;
 	//Observer
 	private Subject subject = new Subject();
 	@SuppressWarnings("unused")
