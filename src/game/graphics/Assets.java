@@ -8,8 +8,6 @@ public class Assets {
 	private static final int width = 32, height = 32;
 	
 	public static Font font28;
-
-
 	public static BufferedImage healthBomb, bigHealthBomb;
 	public static BufferedImage armorGift, bulletsGift;
 	public static BufferedImage stone0, stone5, stone6, stone7, stone8, stone9;
