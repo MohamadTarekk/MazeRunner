@@ -14,7 +14,17 @@ public class Display {
 	public static final int HEIGHT = WIDTH / 4 * 3;
 	public static String TITLE = "The Maze Runner";
 		
-	public Display(){
+	private static Display singleInstance = null;
+	
+	public static Display getDisplay() {
+		
+		 if(singleInstance == null) {
+			 singleInstance = new Display();
+		 }
+		 return singleInstance;
+	}
+	
+	private Display(){
 		frame = new JFrame(TITLE);
 		frame.setResizable(false);
 		frame.setSize(WIDTH, HEIGHT);
