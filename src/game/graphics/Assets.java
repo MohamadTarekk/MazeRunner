@@ -79,18 +79,18 @@ public class Assets {
 		// tree = sheet.crop(0, 0, width, height * 2);
 		// rock = sheet.crop(0, height * 2, width, height);
 		
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/armorGift.png"));
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheild1.png"));
 		armorGift = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/bulletsGift.png"));
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/Fireball1.png"));
 		bulletsGift = sheet.crop(0, 0, width, height);
 
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/woodWall.png"));
 		woodWall = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/path.png"));
 		grass = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/HealthBomb.png"));
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/dynamite1.png"));
 		healthBomb = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/BigHealthBomb.png"));
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/HealthBomb1.png"));
 		bigHealthBomb = sheet.crop(0, 0, width, height);
 		
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone1.png"));
