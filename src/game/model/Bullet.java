@@ -63,8 +63,7 @@ public class Bullet {
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()){
 			if(e.equals(handler.getWorld().getEntityManager().getPlayer()))
 				continue;
-			if(e.getCollisionBounds(handler.getGameCamera().getxOffset(),
-					handler.getGameCamera().getyOffset()).intersects(getCollisionBounds(handler.getGameCamera().getxOffset(),
+			if(e.getCollisionBounds(0f,0f).intersects(getCollisionBounds(handler.getGameCamera().getxOffset(),
 							handler.getGameCamera().getyOffset()))) {
 				e.hurt(1);
 				die();
