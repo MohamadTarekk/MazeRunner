@@ -11,6 +11,7 @@ import game.model.Bullet;
 import game.model.Inventory;
 import game.model.Item;
 import game.model.Weapon;
+import game.model.entity.Entity;
 
 
 public class Player extends Creature {
@@ -21,20 +22,18 @@ public class Player extends Creature {
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 	// Inventory
 	private Inventory inventory;
-	Weapon weapon = new Weapon();
-	public static int firedBullets = 0;
+	Weapon weapon;
+	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
 	private int score = 0;
 	
-
-	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-		
+		weapon = new Weapon(handler);
 		bounds.x = 6;
 		bounds.y = 22;
 		bounds.width = 19;
-		bounds.height = 10;
+		bounds.height = 9;
 		
 		//Animations
 		animDown = new Animation(250, Assets.player_down);
@@ -61,7 +60,6 @@ public class Player extends Creature {
 		inventory.tick();
 		//Bullets
 		weapon.tick();
-		
 	}
 	
 	public boolean isBreakable(int tile) {
@@ -88,7 +86,7 @@ public class Player extends Creature {
 		return false;
 	}
 	
-	private void checkAttacks(){
+	private void checkAttacks() {
 		attackTimer += System.currentTimeMillis() - lastAttackTimer;
 		lastAttackTimer = System.currentTimeMillis();
 		if(attackTimer < attackCooldown)
@@ -118,17 +116,16 @@ public class Player extends Creature {
 		}else{
 			return;
 		}
-		
 		attackTimer = 0;
-		/* malhsash lazma dlwa2ty kda kda mafiish monsters lsa
+		
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()){
 			if(e.equals(this))
 				continue;
-			if(e.getCollisionBounds(0, 0).intersects(ar)){
+			if(isNearby((int) e.getX()/32, (int) e.getY()/32)){
 				e.hurt(1);
 				return;
 			}
-		}*/
+		}
 		int[][] myTiles = handler.getWorld().getTiles();
 		for(int i = 0; i<myTiles.length; i++) {
 			for(int j = 0; j<myTiles.length; j++) {
@@ -167,8 +164,8 @@ public class Player extends Creature {
 			handler.getKeyManager().isShooting = true;
 			weapon.addBullet(new Bullet(x-handler.getGameCamera().getxOffset()
 					,y - handler.getGameCamera().getyOffset(),lastState, handler));
-			firedBullets ++;
-			if(firedBullets == 20)
+			availableBullets --;
+			if(availableBullets == 0)
 				emptyMagazine = true;
 		}
 	}
@@ -234,4 +231,19 @@ public class Player extends Creature {
 	public void setScore(int score) {
 		this.score = score;
 	}	
+	public int getAvailableBullets() {
+		return availableBullets;
+	}
+
+	public void setAvailableBullets(int availableBullets) {
+		this.availableBullets = availableBullets;
+	}
+
+	public boolean isEmptyMagazine() {
+		return emptyMagazine;
+	}
+
+	public void setEmptyMagazine(boolean emptyMagazine) {
+		this.emptyMagazine = emptyMagazine;
+	}
 }

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import game.controller.Handler;
+import game.model.entity.creatures.Monster;
 
 public abstract class Entity {
 
@@ -44,8 +45,12 @@ public abstract class Entity {
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()){
 			if(e.equals(this))
 				continue;
-			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
+			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))) {
+				if(e instanceof Monster) {
+					handler.getWorld().getEntityManager().getPlayer().setAvailableBullets(0);
+				}
 				return true;
+			}
 		}
 		return false;
 	}

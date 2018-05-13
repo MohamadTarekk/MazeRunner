@@ -10,15 +10,17 @@ public class Assets {
 	public static Font font28;
 
 
-	public static BufferedImage healthBomb;
+	public static BufferedImage healthBomb, bigHealthBomb;
+	public static BufferedImage armorGift, bulletsGift;
 	public static BufferedImage stone0, stone5, stone6, stone7, stone8, stone9;
-	public static BufferedImage dirt, grass, stone, tree, rock , uiBackGround;
+	public static BufferedImage woodWall, grass, stone, tree, rock , uiBackGround;
 
 	public static BufferedImage wood;
 	public static BufferedImage[] healthGift;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
 	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets , playerHealth;
+	public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
 	public static BufferedImage inventoryScreen;
 
 	public static void init(){
@@ -44,19 +46,19 @@ public class Assets {
 		player_left[0] = sheet.crop(width * 6, height, width, height);
 		player_left[1] = sheet.crop(width * 7, height, width, height);
 		
-		zombie_down = new BufferedImage[2];
-		zombie_up = new BufferedImage[2];
-		zombie_left = new BufferedImage[2];
-		zombie_right = new BufferedImage[2];
+		monster_down = new BufferedImage[2];
+		monster_up = new BufferedImage[2];
+		monster_left = new BufferedImage[2];
+		monster_right = new BufferedImage[2];
 		
-		zombie_down[0] = sheet.crop(width * 4, height * 2, width, height);
-		zombie_down[1] = sheet.crop(width * 5, height * 2, width, height);
-		zombie_up[0] = sheet.crop(width * 6, height * 2, width, height);
-		zombie_up[1] = sheet.crop(width * 7, height * 2, width, height);
-		zombie_right[0] = sheet.crop(width * 4, height * 3, width, height);
-		zombie_right[1] = sheet.crop(width * 5, height * 3, width, height);
-		zombie_left[0] = sheet.crop(width * 6, height * 3, width, height);
-		zombie_left[1] = sheet.crop(width * 7, height * 3, width, height);
+		monster_down[0] = sheet.crop(width * 4, height * 2, width, height);
+		monster_down[1] = sheet.crop(width * 5, height * 2, width, height);
+		monster_up[0] = sheet.crop(width * 6, height * 2, width, height);
+		monster_up[1] = sheet.crop(width * 7, height * 2, width, height);
+		monster_right[0] = sheet.crop(width * 4, height * 3, width, height);
+		monster_right[1] = sheet.crop(width * 5, height * 3, width, height);
+		monster_left[0] = sheet.crop(width * 6, height * 3, width, height);
+		monster_left[1] = sheet.crop(width * 7, height * 3, width, height);
 
 		healthGift = new BufferedImage[6];
 		
@@ -73,19 +75,25 @@ public class Assets {
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_5.png"));
 		healthGift[5] = sheet.crop(0, 0, width, height);
 		
-		
-		// dirt = sheet.crop(width, 0, width, height);
 		// grass = sheet.crop(width * 2, 0, width, height);
+		// dirt = sheet.crop(width, 0, width, height);
 		// stone = sheet.crop(width * 3, 0, width, height);
 		// tree = sheet.crop(0, 0, width, height * 2);
 		// rock = sheet.crop(0, height * 2, width, height);
 		
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/armorGift.png"));
+		armorGift = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/bulletsGift.png"));
+		bulletsGift = sheet.crop(0, 0, width, height);
+
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/woodWall.png"));
-		dirt = sheet.crop(0, 0, width, height);
+		woodWall = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/path.png"));
 		grass = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/HealthBomb.png"));
 		healthBomb = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/BigHealthBomb.png"));
+		bigHealthBomb = sheet.crop(0, 0, width, height);
 		
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/stone1.png"));
 		stone = sheet.crop(0, 0, width, height);

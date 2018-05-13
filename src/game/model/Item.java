@@ -29,7 +29,7 @@ public abstract class Item {
 	
 	protected int x, y, count;
 	protected boolean pickedUp = false;
-	protected boolean distructable = false;
+	protected boolean distructable = true;
 	
 	public Item(BufferedImage texture, String name, int id){
 		this.texture = texture;

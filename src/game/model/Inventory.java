@@ -89,6 +89,12 @@ public class Inventory {
 		inventoryItems.add(item);
 	}
 	
+	public void updateCount() {
+		for(Item i : inventoryItems) {
+			i.setCount(i.getCount());
+		}
+	}
+	
 	// GETTERS SETTERS
 
 	public Handler getHandler() {
