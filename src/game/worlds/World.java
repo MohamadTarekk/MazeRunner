@@ -6,8 +6,9 @@ import game.controller.Handler;
 import game.model.ItemFactory;
 import game.model.ItemManager;
 import game.model.entity.EntityManager;
-import game.model.entity.creatures.Monster;
+import game.model.entity.creatures.KillerMonster;
 import game.model.entity.creatures.Player;
+import game.model.entity.creatures.TheifMonster;
 import game.utils.Utils;
 import game.view.Tile;
 
@@ -60,9 +61,13 @@ public class World {
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 		
-		entityManager.addEntity(new Monster(handler, 9*32, 4*32));
-		entityManager.addEntity(new Monster(handler, 19*32, 15*32));
-		entityManager.addEntity(new Monster(handler, 6*32, 23*32));
+		entityManager.addEntity(new TheifMonster(handler, 9*32, 4*32));
+		entityManager.addEntity(new TheifMonster(handler, 19*32, 15*32));
+		entityManager.addEntity(new TheifMonster(handler, 6*32, 23*32));
+		
+		entityManager.addEntity(new KillerMonster(handler, 20*32, 11*32));
+		entityManager.addEntity(new KillerMonster(handler, 8*32, 15*32));
+		entityManager.addEntity(new KillerMonster(handler, 18*32, 22*32));
 	}
 	
 	public void tick(){

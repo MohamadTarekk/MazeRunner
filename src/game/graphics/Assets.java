@@ -16,7 +16,7 @@ public class Assets {
 	public static BufferedImage wood;
 	public static BufferedImage[] healthGift;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
-	public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
+	public static BufferedImage[] killerAnim, theifAnim;
 	public static BufferedImage[] btn_start , btn_exit , btn_help , btn_load , bullets , playerHealth;
 	public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
 	public static BufferedImage inventoryScreen;
@@ -58,6 +58,38 @@ public class Assets {
 		monster_left[0] = sheet.crop(width * 6, height * 3, width, height);
 		monster_left[1] = sheet.crop(width * 7, height * 3, width, height);
 
+		killerAnim = new BufferedImage[9];
+		
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_0.png"));
+		killerAnim[0] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_1.png"));
+		killerAnim[1] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_2.png"));
+		killerAnim[2] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_3.png"));
+		killerAnim[3] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_4.png"));
+		killerAnim[4] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_5.png"));
+		killerAnim[5] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_6.png"));
+		killerAnim[6] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_7.png"));
+		killerAnim[7] = sheet.crop(0, 0, 96, 100);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_bossAttack_8.png"));
+		killerAnim[8] = sheet.crop(0, 0, 96, 100);
+
+		theifAnim = new BufferedImage[4];
+		
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_player_0.png"));
+		theifAnim[0] = sheet.crop(0, 0, 60, 80);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_player_1.png"));
+		theifAnim[1] = sheet.crop(0, 0, 60, 80);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_player_2.png"));
+		theifAnim[2] = sheet.crop(0, 0, 60, 80);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_player_3.png"));
+		theifAnim[3] = sheet.crop(0, 0, 60, 80);
+		
 		healthGift = new BufferedImage[6];
 		
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/spr_health_0.png"));
@@ -86,8 +118,8 @@ public class Assets {
 
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/woodWall.png"));
 		woodWall = sheet.crop(0, 0, width, height);
-		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/path.png"));
-		grass = sheet.crop(0, 0, width, height);
+		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/bg_metal.png"));
+		grass = sheet.crop(0, 0, 64, 64);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/dynamite1.png"));
 		healthBomb = sheet.crop(0, 0, width, height);
 		sheet = new SpriteSheet(ImageLoader.loadImage("/textures/HealthBomb1.png"));

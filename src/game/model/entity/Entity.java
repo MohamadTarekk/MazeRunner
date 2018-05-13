@@ -4,7 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import game.controller.Handler;
-import game.model.entity.creatures.Monster;
+import game.model.entity.creatures.KillerMonster;
+import game.model.entity.creatures.TheifMonster;
 
 public abstract class Entity {
 
@@ -46,9 +47,15 @@ public abstract class Entity {
 			if(e.equals(this))
 				continue;
 			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))) {
-				if(e instanceof Monster) {
+				if(e instanceof TheifMonster) {
 					if(!handler.getWorld().getEntityManager().getPlayer().isArmored()) {
 						handler.getWorld().getEntityManager().getPlayer().setAvailableBullets(0);
+					} else {
+						handler.getWorld().getEntityManager().getPlayer().loseArmor();
+					}
+				} else if(e instanceof KillerMonster) {
+					if(!handler.getWorld().getEntityManager().getPlayer().isArmored()) {
+						handler.getWorld().getEntityManager().getPlayer().hurt(4);
 					} else {
 						handler.getWorld().getEntityManager().getPlayer().loseArmor();
 					}
@@ -58,9 +65,6 @@ public abstract class Entity {
 		}
 		return false;
 	}
-
-	
-
 	
 	public Rectangle getCollisionBounds(float xOffset, float yOffset){
 		return new Rectangle((int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height);
