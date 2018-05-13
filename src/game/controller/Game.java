@@ -7,6 +7,7 @@ import game.graphics.Assets;
 import game.graphics.GameCamera;
 import game.input.KeyManager;
 import game.input.MouseManager;
+import game.utils.Musicplayer;
 import game.view.Display;
 
 
@@ -36,7 +37,8 @@ public class Game implements Runnable {
 	private Handler handler;
 	
 	//Music player
-	
+	Musicplayer musicplayer = new Musicplayer("music.wav");
+
 	public Game(int width, int height){
 		this.width = width;
 		this.height = height;
@@ -90,7 +92,7 @@ public class Game implements Runnable {
 	public void run(){
 		
 		init();
-		
+		musicplayer.run();
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;

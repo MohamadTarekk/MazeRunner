@@ -12,6 +12,9 @@ import game.model.Inventory;
 import game.model.Item;
 import game.model.Weapon;
 import game.model.entity.Entity;
+import game.observer.PlayerHealth;
+import game.observer.PlayerScore;
+import game.observer.Subject;
 
 
 public class Player extends Creature {
@@ -26,6 +29,12 @@ public class Player extends Creature {
 	public int availableBullets = 5;
 	private boolean emptyMagazine = false;
 	private int score = 0;
+	//Observer
+	private Subject subject = new Subject();
+	@SuppressWarnings("unused")
+	private PlayerHealth playerHealth = new PlayerHealth(subject,this);
+	@SuppressWarnings("unused")
+	private PlayerScore playerScore = new PlayerScore(subject,this);
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -176,6 +185,7 @@ public class Player extends Creature {
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), 
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		weapon.render(g);
+		subject.setState(score,health,g);
 	}
 	
 	

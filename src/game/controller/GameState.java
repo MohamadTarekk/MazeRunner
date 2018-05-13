@@ -1,7 +1,11 @@
 package game.controller;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
+import game.graphics.Assets;
+import game.graphics.Text;
+import game.utils.TimeCounter;
 import game.worlds.World;
 
 public class GameState extends State {
@@ -22,6 +26,13 @@ public class GameState extends State {
 	@Override
 	public void render(Graphics g) {
 		world.render(g);
+		drawTime(g);
 	}
+		
+	public void drawTime(Graphics g) {
+		Text.drawString(g,"Time elapsed: " + TimeCounter.time,
+				368, 470, false, Color.WHITE, Assets.font28);
+	}
+
 
 }

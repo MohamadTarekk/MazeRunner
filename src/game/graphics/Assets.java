@@ -22,7 +22,7 @@ public class Assets {
 	public static BufferedImage inventoryScreen;
 
 	public static void init(){
-		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
+		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 16);
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 		

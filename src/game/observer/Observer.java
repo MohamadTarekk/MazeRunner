@@ -1,10 +1,9 @@
 package game.observer;
 
-import game.controller.Handler;
+import java.awt.Graphics;
 
 public abstract class Observer {
 
 	protected Subject subject;
-	protected Handler handler;
-	public abstract void update();
+	public abstract void update(Graphics g);
 }

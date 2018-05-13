@@ -7,11 +7,13 @@ import game.ui.ClickListener;
 import game.ui.UIBackGround;
 import game.ui.UIImageButton;
 import game.ui.UIManager;
+import game.utils.TimeCounter;
 
 
 public class MenuState extends State {
 
 	private UIManager uiManager;
+	private TimeCounter timeCounter = new TimeCounter();
 
 	public MenuState(Handler handler) {
 		super(handler);
@@ -24,6 +26,7 @@ public class MenuState extends State {
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
+				timeCounter.runTimer();
 			}
 		}));
 		uiManager.addObject(new UIImageButton(260, 225, 128, 64, Assets.btn_load, new ClickListener() {

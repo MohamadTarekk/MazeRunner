@@ -24,7 +24,7 @@ public class World {
 	private EntityManager entityManager;
 	// Item
 	private ItemManager itemManager;
-	
+	//TimeCounter
 	public World(Handler handler, String path){
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 32, 32));
@@ -49,7 +49,6 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 625, 325));
 		//*/
 		loadWorld(path);
-		
 		// To initialize the inventory
 		itemManager.addItem(itemFactory.getItem("Bullets Gift", spawnX, spawnY));
 
@@ -81,6 +80,7 @@ public class World {
 		//Entities
 		entityManager.render(g);
 	}
+	
 	
 	public Tile getTile(int x, int y){
 		if(x < 0 || y < 0 || x >= width || y >= height)
