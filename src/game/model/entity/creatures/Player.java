@@ -142,7 +142,6 @@ public class Player extends Creature {
 			if(e.equals(this))
 				continue;
 			if(isNearby((int) Math.ceil(e.getX()/32), (int) Math.ceil(e.getY()/32))) {
-				System.out.println("a");
 				e.hurt(1);
 				return;
 			}
